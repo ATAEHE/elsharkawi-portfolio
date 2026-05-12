@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أرشيف الأخبار | النادي الأهلي</title>
+    <link rel="stylesheet" href="home.css">
+    <style>
+        .page-header {
+            background-color: var(--bg-dark);
+            padding: 60px 0;
+            color: var(--bg-white);
+            border-bottom: 4px solid var(--primary-red);
+        }
+        .page-header h1 {
+            font-size: 40px;
+        }
+        
+        .news-archive-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding: 60px 0;
+        }
+        @media(max-width: 991px) {
+            .news-archive-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media(max-width: 768px) {
+            .news-archive-grid { grid-template-columns: 1fr; }
+        }
+
+        .archive-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .archive-card:hover {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+            transform: translateY(-5px);
+        }
+        .archive-img {
+            height: 200px;
+            overflow: hidden;
+            background: var(--bg-offwhite);
+        }
+        .archive-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+        .archive-card:hover .archive-img img {
+            transform: scale(1.05);
+        }
+        .archive-content {
+            padding: 20px;
+            flex-grow: 1;
+        }
+        .archive-meta {
+            color: var(--primary-red);
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .archive-content h3 {
+            font-size: 18px;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding-bottom: 80px;
+        }
+        .page-item {
+            display: flex; /* Use flex instead of inline-block to fix height vertically */
+            width: 40px; height: 40px;
+            align-items: center; justify-content: center;
+            border: 1px solid var(--border-light);
+            font-weight: 700;
+            transition: var(--transition-smooth);
+        }
+        .page-item:hover, .page-item.active {
+            background: var(--primary-red);
+            color: var(--bg-white);
+            border-color: var(--primary-red);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP NAVIGATION -->
+    <div class="top-nav">
+        <div class="container">
+            <a href="sponsors.html">الرعاة</a>
+            <a href="fans.html">جماهير الأهلي</a>
+            <a href="login.html">تسجيل الدخول / إنشاء حساب 👤</a>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="main-nav">
+        <div class="container">
+            <div class="brand-logo">
+                <a href="index.html">
+                    <img src="elahly_logo.jpg" alt="Al Ahly SC Logo">
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="news.html" class="active">الأخبار</a>
+                <a href="champions.html">البطولات</a>
+                <a href="matches.html">المباريات</a>
+                <a href="team.html">الفريق الأول</a>
+                <a href="club.html">النادي</a>
+            </nav>
+            <div class="nav-tools">
+                <a href="#" class="btn btn-primary">متجر الأهلي</a>
+                <a href="index.html">
+                <button class="mobile-menu-btn">🏠︎</button></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>أرشيف أخبار الأهلي</h1>
+        </div>
+    </div>
+
+    <section class="container">
+        <div class="news-archive-grid">
+            <a href="#" class="archive-card">
+                <div class="archive-img">
+                    <img src="https://cdn.foot-africa.com/20250806/bee0829e091023f4a0cfed529b7efae13ed37e17112cbf39ec2a0216b9fa4cb2-1200-675.jpg" alt="News">
+                </div>
+                <div class="archive-content">
+                    <div class="archive-meta">الفريق الأول • منذ 2 ساعة</div>
+                    <h3>الجهاز الفني يعلن قائمة الفريق لمواجهة بطل إفريقيا القادمة</h3>
+                </div>
+            </a>
+            
+            <a href="#" class="archive-card">
+                <div class="archive-img">
+                    <img src="data:image/jpeg;base64,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" alt="News">
+                </div>
+                <div class="archive-content">
+                    <div class="archive-meta">تدريبات • منذ 5 ساعات</div>
+                    <h3>بقيادة Jess Thorup , تدريبات بدنية وخططية مكثفة استعداداً للموسم</h3>
+                </div>
+            </a>
+
+            <a href="#" class="archive-card">
+                <div class="archive-img">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSomFNU66mc47eD4FPzoFwgYDfEhOrUuYXjDA&s" alt="News">
+                </div>
+                <div class="archive-content">
+                    <div class="archive-meta">مجلس الإدارة • منذ 1 يوم</div>
+                    <h3>الخطيب يوجه الشكر لجمهور الأهلي العظيم على مساندته في النهائي</h3>
+                </div>
+            </a>
+
+            <a href="#" class="archive-card">
+                <div class="archive-img">
+                    <img src="https://www.cairo24.com/UploadCache/libfiles/87/0/600x338o/133.jpg" alt="News">
+                </div>
+                <div class="archive-content">
+                    <div class="archive-meta">جمهورنا الأعظم • منذ 2 يوم</div>
+                    <h3>طرح أول دفعة من التذاكر لحضور اللقاء المرتقب في ستاد القاهرة</h3>
+                </div>
+            </a>
+
+            <a href="#" class="archive-card">
+                <div class="archive-img">
+                    <img src="https://alahly-images.s3.us-east-2.amazonaws.com/Article/original/FB_IMG_1769106221875-69726b3b9a7be.jpg" alt="News">
+                </div>
+                <div class="archive-content">
+                    <div class="archive-meta">قطاع الناشئين • منذ 3 أيام</div>
+                    <h3>فريق 2005 يضرب بقوة في مسابقة دوري الجمهورية</h3>
+                </div>
+            </a>
+
+            <a href="#" class="archive-card">
+                <div class="archive-img">
+                    <!-- Placeholder -->
+                    <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=600&auto=format&fit=crop" style="filter: grayscale(100%);">
+                </div>
+                <div class="archive-content">
+                    <div class="archive-meta">الطاقم الطبي • منذ 3 أيام</div>
+                    <h3>أشعة جديدة تحدد موعد عودة نجم الفريق للتدريبات الجماعية</h3>
+                </div>
+            </a>
+        </div>
+
+        <div class="pagination">
+            <a href="#" class="page-item active">1</a>
+            <a href="#" class="page-item">2</a>
+            <a href="#" class="page-item">3</a>
+            <a href="#" class="page-item">التالي</a>
+        </div>
+    </section>
+
+    <!-- MEGA FOOTER -->
+    <footer class="mega-footer">
+        <!-- Re-use same footer HTML -->
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="elahly_logo.jpg" alt="Al Ahly SC">
+                    <p>النادي الأهلي المصري هو النادي الأنجح في تاريخ قارة أفريقيا والوطن العربي، وتأسس عام 1907 ليكون النادي الرائد في تقديم المواهب الكروية وصناعة الإنجازات العالمية.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>الفرق الرياضية</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">الفريق الأول لكرة القدم</a></li>
+                        <li><a href="#">كرة السلة</a></li>
+                        <li><a href="#">كرة اليد</a></li>
+                        <li><a href="#">الكرة الطائرة</a></li>
+                        <li><a href="#">قطاع الناشئين</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>النادي</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">تاريخ النادي</a></li>
+                        <li><a href="#">مجلس الإدارة</a></li>
+                        <li><a href="#">رؤساء النادي</a></li>
+                        <li><a href="#">مبادئ الأهلي</a></li>
+                        <li><a href="#">فروع النادي</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">تحميل تطبيق الأهلي</a></li>
+                        <li><a href="#">تذاكر المباريات</a></li>
+                        <li><a href="#">المتجر الرسمي</a></li>
+                        <li><a href="#">تواصل معنا</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 النادي الأهلي الرياضي. جميع الحقوق محفوظة.</p>
+                <div class="social-links">
+                    <a href="#">f</a><a href="#">X</a><a href="#">in</a><a href="#">yt</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,322 @@
+/* 1. الإعدادات الأساسية */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Tajawal', sans-serif;
+}
+
+body {
+    background-color: #0c0c0c; /* أسود غامق فخم */
+    color: white;
+    direction: rtl;
+    overflow-x: hidden;
+}
+
+/* 2. الهيدر (Header) */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+    background-color: #1a1a1a;
+    border-bottom: 2px solid #ff0000;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* المنيو (3 شرط) */
+.menu-toggle {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 2px;
+}
+
+/* خانة البحث */
+.search-bar {
+    display: flex;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 5px 15px;
+    width: 40%;
+    border: 1px solid #8a8a8a;
+}
+
+.search-bar input {
+    background: none;
+    border: none;
+    color: rgb(0, 0, 0);
+    width: 100%;
+    outline: none;
+    text-align: right;
+}
+
+.search-bar button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* الحساب واللوجو */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.account-btn {
+    font-size: 1.2rem;
+    cursor: pointer;
+    background: #333;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.nav-logo {
+    height: 45px;
+}
+
+/* 3. محتوى الصفحة والكروت */
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+}
+
+.vision-card {
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: 0.4s;
+    text-align: right;
+}
+
+.vision-card:hover {
+    border-color: #ff0000;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 0, 0, 0.2);
+}
+
+.card-content {
+    flex: 1;
+}
+
+.card-content h2 {
+    color: #ff0000;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+/* تنسيق الصورة داخل الكارت */
+.vision-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 2px solid #ff0000;
+}
+
+/* 4. القائمة الجانبية (Sidebar) */
+.side-drawer {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.4s ease;
+    padding-top: 60px;
+}
+
+.side-drawer a {
+    padding: 15px 30px;
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: white;
+    display: block;
+    text-align: right;
+    border-bottom: 1px solid #222;
+}
+
+.side-drawer .close-btn {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 30px;
+}
+
+/* استجابة الموبايل */
+@media (max-width: 768px) {
+    .vision-card {
+        flex-direction: column-reverse; /* الصورة فوق الكلام في الموبايل */
+        text-align: center;
+    }
+    .search-bar {
+        width: 50%;
+    }
+}
+.vision-card {
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 25px;
+    
+    /* السر هنا: عرض العناصر جنب بعض */
+    display: flex;
+    flex-direction: row; /* الصور والكلام جنب بعض */
+    align-items: center; /* توسيطهم رأسياً */
+    gap: 30px; /* مسافة بين الصورة والكلام */
+    
+    transition: 0.4s;
+    text-align: right;
+}
+
+.vision-card img {
+    width: 200px; /* كبرنا حجم الصورة شوية عشان تبان */
+    height: 150px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 2px solid #ff0000;
+    flex-shrink: 0; /* بيمنع الصورة إنها تصغر لو الكلام كتير */
+}
+
+.card-content {
+    flex: 1; /* بيخلي الكلام ياخد باقي المساحة المتاحة */
+}
+
+.card-content h2 {
+    color: #ff0000;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    font-size: 1.1rem;
+    color: #ccc;
+    line-height: 1.6;
+    text-decoration: none; /* عشان يشيل الخط اللي تحت اللينك */
+
+}
+
+
+/* تعديل بسيط للموبايل عشان ميبقوش مزنوقين */
+@media (max-width: 600px) {
+    .vision-card {
+        flex-direction: column; /* يرجعوا تحت بعض في الشاشات الصغيرة */
+        text-align: center;
+    }
+    .vision-card img {
+        width: 100%;
+        height: 200px;
+    }
+}
+/* شاشات الموبايل (أقل من 768 بيكسل) */
+/* الإعدادات الأساسية للموبايل */
+@media screen and (max-width: 768px) {
+    
+    /* 1. الشريط الأسود اللي فوق: نخليه بسيط جداً */
+    .top-nav .container {
+        justify-content: center; /* سنتر الكلام */
+    }
+    .top-links {
+        display: none; /* إخفاء روابط PLUS و STORE في الموبايل لعدم الزحمة */
+    }
+
+    /* 2. الهيدر الأبيض الرئيسي: توزيع ثلاثي واضح */
+    .container-nav {
+        display: flex;
+        justify-content: space-between; /* عنصر يمين، عنصر نص، عنصر شمال */
+        align-items: center;
+        padding: 0 10px;
+        height: 70px;
+    }
+
+    /* 3. الثلاث شرط (اليمين): نكبرهم ونبينهم */
+    .menu-icon {
+        display: flex !important; /* تأكيد ظهورها */
+        order: 1; /* أول عنصر على اليمين */
+        margin: 0;
+        z-index: 100;
+    }
+    .menu-icon span {
+        width: 25px;
+        height: 3px;
+        background: #000;
+        margin: 2px 0;
+    }
+
+    /* 4. اللوجو (المنتصف): نخليه في النص بالظبط */
+    .logo-sec {
+        order: 2;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .royal-logo {
+        height: 55px; /* صغرناه شوية عشان الموبايل */
+        margin-top: 0;
+        transform: none;
+    }
+
+    /* 5. البحث (الشمال): يظهر كأيقونة أو بوكس صغير جداً */
+    .search-section {
+        order: 3; /* آخر عنصر على الشمال */
+        display: flex;
+        justify-content: flex-end;
+    }
+    .search-wrapper {
+        width: 100px; /* بوكس صغير جداً */
+        padding: 5px;
+    }
+    #searchInput {
+        font-size: 10px;
+    }
+
+    /* 6. إخفاء المنيو العريضة: دي أهم خطوة عشان الزراير متبوظش */
+    .nav-menu {
+        display: none !important; /* بنخفي (News, Trophies, Team) من الهيدر */
+    }
+
+    /* 7. الـ Hero Section (الصورة اللي تحت الهيدر) */
+    .hero-text h1 {
+        font-size: 30px !important; /* تصغير العنوان الكبير */
+        line-height: 1.2;
+    }
+    .hero-btns {
+        display: flex;
+        flex-direction: column; /* الزراير تحت بعض في الموبايل */
+        gap: 10px;
+    }
+    .hero-btns a {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}

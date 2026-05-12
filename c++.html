@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Project | Official Codice Fiscale Logic</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Fira+Code:wght@400;500&family=Outfit:wght@300;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --accent-blue: #0066cc;
+            --italy-green: #008c45;
+            --italy-red: #cd212a;
+            --glass-bg: rgba(255, 255, 255, 0.95);
+            --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #dbeafe 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+
+        body {
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            color: #1e293b;
+            padding-bottom: 100px;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            padding: 15px 0;
+            display: flex; justify-content: center; gap: 30px;
+            z-index: 10000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav a { text-decoration: none; color: #64748b; font-weight: 700; font-size: 0.9rem; transition: 0.3s; }
+        nav a:hover { color: var(--accent-blue); }
+
+        /* Header Area */
+        .header { padding: 120px 20px 30px; text-align: center; }
+        .header h1 { font-family: 'Outfit', sans-serif; font-size: clamp(1.8rem, 5vw, 2.5rem); color: #0f172a; }
+        
+        .italy-line { display: flex; width: 60px; height: 5px; margin: 10px auto; border-radius: 10px; overflow: hidden; }
+        .it-g { background: var(--italy-green); flex: 1; }
+        .it-w { background: #fff; flex: 1; }
+        .it-r { background: var(--italy-red); flex: 1; }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+        /* Main Card Layout */
+        .project-card {
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            border: 1px solid #edf2f7;
+        }
+
+        .form-section h2 { margin-bottom: 20px; font-size: 1.3rem; color: var(--accent-blue); }
+        
+        .input-box { margin-bottom: 15px; text-align: right; }
+        .input-box label { display: block; font-size: 0.8rem; font-weight: bold; margin-bottom: 5px; color: #475569; }
+        .input-box input, .input-box select {
+            width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 10px; 
+            font-size: 16px; background: #f8fafc; outline: none; transition: 0.3s;
+        }
+        .input-box input:focus { border-color: var(--accent-blue); background: #fff; }
+
+        .btn-calc {
+            width: 100%; padding: 16px; border: none; border-radius: 12px;
+            background: var(--accent-blue); color: white; font-weight: bold;
+            font-size: 1rem; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 12px rgba(0,102,204,0.2);
+        }
+        .btn-calc:hover { background: #0052a3; transform: translateY(-2px); }
+
+        /* Output Window */
+        .result-section {
+            background: #0f172a;
+            border-radius: 20px;
+            padding: 30px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 280px;
+        }
+
+        .code-output {
+            font-family: 'Fira Code', monospace;
+            font-size: clamp(1.2rem, 4vw, 2.2rem);
+            color: #38bdf8;
+            letter-spacing: 2px;
+            margin: 20px 0;
+            background: rgba(56, 189, 248, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            width: 100%;
+            word-break: break-all;
+            text-transform: uppercase;
+        }
+
+        .logic-hint { font-size: 0.75rem; color: #94a3b8; line-height: 1.5; text-align: center; }
+
+        /* Mobile Adjustments */
+        @media (max-width: 850px) {
+            .project-card { grid-template-columns: 1fr; }
+            .result-section { order: 2; margin-top: 20px; }
+            .header { padding-top: 80px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html">الرئيسية</a>
+        <a href="index.html#work">أعمالي</a>
+        <a href="index.html#contact">تواصل</a>
+    </nav>
+
+    <header class="header">
+        <div class="italy-line"><div class="it-g"></div><div class="it-w"></div><div class="it-r"></div></div>
+        <h1>Codice Fiscale Generator</h1>
+        <p>خوارزمية احترافية مبنية بلغة C++ ومحولة للويب</p>
+    </header>
+
+    <div class="container">
+        <div class="project-card">
+            
+            <div class="form-section">
+                <h2>إدخال البيانات</h2>
+                <div class="input-box">
+                    <label>اللقب (Cognome)</label>
+                    <input type="text" id="lastName" placeholder="ادخل اللقب">
+                </div>
+                <div class="input-box">
+                    <label>الاسم (Nome)</label>
+                    <input type="text" id="firstName" placeholder="ادخل الاسم">
+                </div>
+                <div class="input-box">
+                    <label>تاريخ الميلاد</label>
+                    <input type="date" id="birthDate">
+                </div>
+                <div class="input-box">
+                    <label>الجنس (Sesso)</label>
+                    <select id="gender">
+                        <option value="M">ذكر (M)</option>
+                        <option value="F">أنثى (F)</option>
+                    </select>
+                </div>
+                <div class="input-box">
+                    <label>المدينة/دولة الميلاد</label>
+                    <select id="birthPlace">
+                        <option value="Z336">مصر (EGITTO)</option>
+                        <option value="H501">روما (ROMA)</option>
+                        <option value="F205">ميلانو (MILANO)</option>
+                        <option value="F839">نابولي (NAPOLI)</option>
+                        <option value="L219">تورينو (TORINO)</option>
+                        <option value="Z110">فرنسا (FRANCIA)</option>
+                        <option value="Z112">إسبانيا (SPAGNA)</option>
+                        <option value="Z404">أخرى (STRANIERO)</option>
+                    </select>
+                </div>
+                <button class="btn-calc" onclick="generateCode()">تشغيل الخوارزمية</button>
+            </div>
+
+            <div class="result-section">
+                <i class="fa-solid fa-microchip" style="font-size: 2.5rem; color: #38bdf8; margin-bottom: 15px;"></i>
+                <p style="font-size: 0.85rem; color: #94a3b8;">الرمز الناتج (16 حرفاً):</p>
+                <div id="displayCode" class="code-output">---- ----</div>
+                <p class="logic-hint">
+                    تستخدم الخوارزمية جداول <strong>Odd/Even Control Digit</strong><br>
+                    وقواعد استخراج الحروف (1,3,4 للمنطق المتقدم)
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // --- C++ Logic Ported to JavaScript ---
+
+        function toUpper(str) {
+            return str.toUpperCase();
+        }
+
+        function removeNonAlpha(str) {
+            return str.replace(/[^A-Z]/gi, "");
+        }
+
+        function extractNamePart(str, isSurname) {
+            let consonants = "";
+            let vowels = "";
+            str = toUpper(str);
+
+            for (let char of str) {
+                if ("AEIOU".includes(char)) {
+                    vowels += char;
+                } else if (/[A-Z]/.test(char)) {
+                    consonants += char;
+                }
+            }
+
+            let result = "";
+            if (isSurname) {
+                // منطق اللقب في كودك
+                for (let i = 0; i < consonants.length && result.length < 3; i++) result += consonants[i];
+                for (let i = 0; i < vowels.length && result.length < 3; i++) result += vowels[i];
+                while (result.length < 3) result += 'X';
+            } else {
+                // منطق الاسم المتقدم في كودك (قاعدة 1، 3، 4)
+                if (consonants.length >= 4) {
+                    result += consonants[0] + consonants[2] + consonants[3];
+                } else if (consonants.length === 3) {
+                    result = consonants;
+                } else {
+                    result = consonants;
+                    for (let i = 0; i < vowels.length && result.length < 3; i++) result += vowels[i];
+                    while (result.length < 3) result += 'X';
+                }
+            }
+            return result.substring(0, 3);
+        }
+
+        function getCheckDigit(code15) {
+            const oddMap = {
+                '0': 1, '1': 0, '2': 5, '3': 7, '4': 9, '5': 13, '6': 15, '7': 17, '8': 19, '9': 21,
+                'A': 1, 'B': 0, 'C': 5, 'D': 7, 'E': 9, 'F': 13, 'G': 15, 'H': 17, 'I': 19, 'J': 21,
+                'K': 2, 'L': 4, 'M': 18, 'N': 20, 'O': 11, 'P': 3, 'Q': 6, 'R': 8, 'S': 12, 'T': 14,
+                'U': 16, 'V': 10, 'W': 22, 'X': 25, 'Y': 24, 'Z': 23
+            };
+            const evenMap = {
+                '0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9,
+                'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9,
+                'K': 10, 'L': 11, 'M': 12, 'N': 13, 'O': 14, 'P': 15, 'Q': 16, 'R': 17, 'S': 18, 'T': 19,
+                'U': 20, 'V': 21, 'W': 22, 'X': 23, 'Y': 24, 'Z': 25
+            };
+
+            let sum = 0;
+            for (let i = 0; i < 15; i++) {
+                let char = code15[i];
+                // المنطق بتاعك (i+1) عشان الـ indexing بيبدأ من 0
+                if ((i + 1) % 2 === 1) sum += oddMap[char];
+                else sum += evenMap[char];
+            }
+            return String.fromCharCode(65 + (sum % 26));
+        }
+
+        function generateCode() {
+            let lastName = removeNonAlpha(document.getElementById('lastName').value);
+            let firstName = removeNonAlpha(document.getElementById('firstName').value);
+            let bDate = new Date(document.getElementById('birthDate').value);
+            let gender = document.getElementById('gender').value;
+            let birthPlace = document.getElementById('birthPlace').value;
+
+            if (!lastName || !firstName || isNaN(bDate)) {
+                alert("برجاء إدخال كافة البيانات بشكل صحيح");
+                return;
+            }
+
+            // 1. Surname & Name Parts
+            let partialCode = extractNamePart(lastName, true) + extractNamePart(firstName, false);
+
+            // 2. Year Code
+            let year = bDate.getFullYear() % 100;
+            partialCode += (year < 10 ? "0" : "") + year;
+
+            // 3. Month Code
+            const monthMap = ['A', 'B', 'C', 'D', 'E', 'H', 'L', 'M', 'P', 'R', 'S', 'T'];
+            partialCode += monthMap[bDate.getMonth()];
+
+            // 4. Day & Gender Code
+            let day = bDate.getDate();
+            if (gender === 'F') day += 40;
+            partialCode += (day < 10 ? "0" : "") + day;
+
+            // 5. Birth Place Code (Comune/Paese)
+            partialCode += birthPlace;
+
+            // 6. Check Digit (The 16th Character)
+            let checkDigit = getCheckDigit(partialCode);
+
+            document.getElementById('displayCode').innerText = partialCode + checkDigit;
+        }
+    </script>
+
+</body>
+</html>

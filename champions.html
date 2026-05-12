@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأهلي 12 | فخر أفريقيا</title>
+    <link rel="stylesheet" href="elahly.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<style>
+.trophy-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.section-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 35px;
+    color: #ffffff;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    border-bottom: 4px solid #ff0000;
+    display: inline-block;
+}
+
+.trophy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.trophy-card {
+    background: #fff;
+    border: 1px solid #eee;
+    padding: 30px 20px;
+    text-decoration: none; /* عشان يشيل الخط اللي تحت اللينك */
+    color: #333;
+    transition: 0.4s all ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.trophy-img-wrapper {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.trophy-card img {
+    height: 100%;
+    transition: 0.5s;
+}
+
+.trophy-card h3 {
+    font-size: 18px;
+    font-weight: 900;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.trophy-count {
+    background: #ff0000;
+    color: #fff;
+    padding: 5px 15px;
+    font-weight: bold;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.trophy-card:hover {
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    transform: translateY(-10px);
+    border-color: #ff0000;
+}
+
+.trophy-card:hover img {
+    transform: scale(1.1); /* الكأس يكبر شوية */
+}
+
+/* الإعدادات الأساسية للموبايل */
+@media screen and (max-width: 768px) {
+    
+    /* 1. الشريط الأسود اللي فوق: نخليه بسيط جداً */
+    .top-nav .container {
+        justify-content: center; /* سنتر الكلام */
+    }
+    .top-links {
+        display: none; /* إخفاء روابط PLUS و STORE في الموبايل لعدم الزحمة */
+    }
+
+    /* 2. الهيدر الأبيض الرئيسي: توزيع ثلاثي واضح */
+    .container-nav {
+        display: flex;
+        justify-content: space-between; /* عنصر يمين، عنصر نص، عنصر شمال */
+        align-items: center;
+        padding: 0 10px;
+        height: 70px;
+    }
+
+    /* 3. الثلاث شرط (اليمين): نكبرهم ونبينهم */
+    .menu-icon {
+        display: flex !important; /* تأكيد ظهورها */
+        order: 1; /* أول عنصر على اليمين */
+        margin: 0;
+        z-index: 100;
+    }
+    .menu-icon span {
+        width: 25px;
+        height: 3px;
+        background: #000;
+        margin: 2px 0;
+    }
+
+    /* 4. اللوجو (المنتصف): نخليه في النص بالظبط */
+    .logo-sec {
+        order: 2;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .royal-logo {
+        height: 55px; /* صغرناه شوية عشان الموبايل */
+        margin-top: 0;
+        transform: none;
+    }
+
+    /* 5. البحث (الشمال): يظهر كأيقونة أو بوكس صغير جداً */
+    .search-section {
+        order: 3; /* آخر عنصر على الشمال */
+        display: flex;
+        justify-content: flex-end;
+    }
+    .search-wrapper {
+        width: 100px; /* بوكس صغير جداً */
+        padding: 5px;
+    }
+    #searchInput {
+        font-size: 10px;
+    }
+
+    /* 6. إخفاء المنيو العريضة: دي أهم خطوة عشان الزراير متبوظش */
+    .nav-menu {
+        display: none !important; /* بنخفي (News, Trophies, Team) من الهيدر */
+    }
+
+    /* 7. الـ Hero Section (الصورة اللي تحت الهيدر) */
+    .hero-text h1 {
+        font-size: 30px !important; /* تصغير العنوان الكبير */
+        line-height: 1.2;
+    }
+    .hero-btns {
+        display: flex;
+        flex-direction: column; /* الزراير تحت بعض في الموبايل */
+        gap: 10px;
+    }
+    .hero-btns a {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+</style>
+
+<body>
+
+    <header class="main-header">
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+
+        <div class="search-bar">
+            <input type="text" placeholder="ابحث عن بطولة...">
+            <button>⌕</button>
+        </div>
+
+        <div class="header-left">
+            <div class="account-btn">👤︎</div>
+            <img src="elahly_logo.jpg" alt="Logo" class="nav-logo">
+        </div>
+    </header>
+
+    <div class="trophy-container">
+        <h2 class="section-title">اختر البطولة لاستكشاف التاريخ</h2>
+
+        <div class="trophy-grid">
+            <a href="elahly_caf.html" class="trophy-card">
+                <div class="trophy-img-wrapper">
+                    <img src="https://www.cafonline.com/media/qfab0map/cl_2025_26-1.jpg" alt="دوري أبطال أفريقيا">
+                </div>
+                <h3>دوري أبطال أفريقيا</h3>
+                <span class="trophy-count">12 لقب</span>
+            </a>
+
+            <a href="epl.html" class="trophy-card">
+                <div class="trophy-img-wrapper">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Egyptian_Premier_League_logo_2023.png" alt="الدوري المصري">
+                </div>
+                <h3>الدوري المصري الممتاز</h3>
+                <span class="trophy-count">44 لقب</span>
+            </a>
+
+            <a href="kas_masr.html" class="trophy-card">
+                <div class="trophy-img-wrapper">
+                    <img src="https://almsaeyimages.akhbarelyom.com/large/20250416220917462.jpg" alt="كأس مصر">
+                </div>
+                <h3>كأس مصر</h3>
+                <span class="trophy-count">39 لقب</span>
+            </a>
+
+            <a href="super_caf.html" class="trophy-card">
+                <div class="trophy-img-wrapper">
+                    <img src="caf_super.jpg" alt="السوبر الأفريقي">
+                </div>
+                <h3>السوبر الأفريقي</h3>
+                <span class="trophy-count">8 ألقاب</span>
+            </a>
+
+             <a href="egypt-cup.html" class="trophy-card">
+                <div class="trophy-img-wrapper">
+                    <img src="https://www.365scores.com/ar/news/magazine/wp-content/uploads/2025/05/caf-confd-2025-780x470.webp" alt="الكونفدرالية الأفريقية">
+                </div>
+                <h3> الكونفدرالية الأفريقية </h3>
+                <span class="trophy-count">مرة واحدة.</span>
+            </a>
+
+            <a href="world_cup.html" class="trophy-card">
+                <div class="trophy-img-wrapper">
+                    <img src="https://assets.goal.com/images/v3/blte6b2deb29979881f/20241112_FIFA_CWC_Trophy_Open_Stand_BLK_crops1920x1080.png?auto=webp&format=pjpg&width=3840&quality=60" alt="كأس العالم للأندية: ">
+                </div>
+                <h3> كأس العالم للأندية  </h3>
+            </a>
+
+        </div>
+    </div>
+
+    <div id="sideDrawer" class="side-drawer">
+        <a href="javascript:void(0)" class="close-btn" onclick="toggleMenu()">&times;</a>
+        <nav>
+            <a href="index.html">الرئيسية</a>
+            <a href="champions.html">تاريخ البطولات</a>
+            <a href="">نادي القرن</a>
+            <a href="team1.html">الفريق الأول</a>
+        </nav>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function toggleMenu() {
+            const drawer = document.getElementById("sideDrawer");
+            drawer.style.width = (drawer.style.width === "250px") ? "0" : "250px";
+
+        }
+    </script>
+</body>
+
+</html>

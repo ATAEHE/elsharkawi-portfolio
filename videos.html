@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأهلي TV | المنصة الإعلامية الرسمية</title>
+    <link rel="stylesheet" href="home.css">
+    <style>
+        body { background-color: var(--bg-darker); color: var(--text-light); }
+        .tv-hero {
+            position: relative;
+            height: 70vh;
+            background-image: linear-gradient(to top, var(--bg-darker), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=1600&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 60px;
+        }
+        .tv-hero-content {
+            z-index: 10;
+        }
+        .tv-hero h1 { font-size: 55px; margin-bottom: 20px; text-transform: uppercase; }
+        .tv-hero .tag { background: var(--primary-red); padding: 5px 15px; display: inline-block; font-weight: 800; margin-bottom: 15px; border-radius: 3px; }
+        
+        .video-slider-title { font-size: 24px; font-weight: 700; margin: 40px 0 20px; padding-right: 20px; border-right: 4px solid var(--primary-red); }
+        .video-slider {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            scrollbar-width: none;
+        }
+        .video-slider::-webkit-scrollbar { display: none; }
+        
+        .vid-card {
+            min-width: 320px;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+        .vid-card:hover { transform: scale(1.05); z-index: 10; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .vid-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; transition: var(--transition-smooth); }
+        .vid-card:hover img { filter: brightness(0.6); }
+        .vid-card-overlay {
+            position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+        }
+        .vid-card h4 { font-size: 16px; margin-bottom: 5px; }
+        .vid-card-meta { font-size: 12px; color: var(--text-muted); }
+        .play-icon {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-size: 40px; color: #fff; opacity: 0; transition: var(--transition-smooth);
+        }
+        .vid-card:hover .play-icon { opacity: 1; }
+
+    </style>
+</head>
+<body>
+    <header class="main-nav" style="background: rgba(0,0,0,0.9); border-bottom: 1px solid #333;">
+        <div class="container">
+            <div class="brand-logo">
+                <a href="index.html"><img src="elahly_logo.jpg" alt="Ahly Logo"></a>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html" style="color:#fff;">الرئيسية</a>
+                <a href="videos.html" class="active" style="color:var(--primary-red);">Ahly TV</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="tv-hero">
+        <div class="container">
+            <div class="tv-hero-content">
+                <span class="tag">حصري</span>
+                <h1>الفيلم الوثائقي: نادي القرن</h1>
+                <p style="font-size: 20px; max-width: 600px; color: #ddd; margin-bottom: 30px;">
+                    استكشف تاريخ أعظم نادي في الكون من خلال لقطات حصرية ومقابلات نادرة مع أساطير النادي عبر الأجيال.
+                </p>
+                <a href="https://www.youtube.com/watch?v=Q1WLGiNrHKk&pp=ygUl2YHZhNmFINin2YTYo9mH2YTZiiDYp9mE2YjYq9in2KbZgtmKIA%3D%3D">
+                <button class="btn btn-primary" style="font-size: 18px; padding: 15px 40px;">▶ تشغيل الفيلم</button></a>
+                <button class="btn btn-outline-light" style="margin-right: 15px;">+ إضافتي للقائمة</button>
+            </div>
+        </div>
+    </div>
+
+    <section class="section" style="padding-top: 20px;">
+        <div class="container">
+            
+            <h2 class="video-slider-title">أحدث الملخصات</h2>
+            <div class="video-slider">
+                <div class="vid-card">
+                    <a href="https://www.youtube.com/watch?v=QpvlvMuu2hA&pp=ygVMPtmF2YTYrti1INmF2KjYp9ix2KfYqSDYp9mE2KPZh9mE2Yog2YjYp9mE2LLZhdin2YTZgyAtINmG2YfYp9im2Yog2KfZhNmD2KPYsw%3D%3D">
+                    <img src="https://www.cairo24.com/UploadCache/libfiles/170/3/600x338o/561.jpg" alt="Match">
+                    <div class="play-icon">▶</div>
+                    <div class="vid-card-overlay">
+                        <h4>ملخص مباراة الأهلي والزمالك - نهائي الكأس</h4>
+                        <div class="vid-card-meta"> • منذ يومين</div>
+                    </a>
+                    </div>
+                </div>
+                <div class="vid-card">
+                    <a href="https://www.youtube.com/watch?v=Q1WLGiNrHKk&t=12s&pp=ygU82KrYqtmI2YrYrCDYp9mE2KPZh9mE2Yog2KjYp9mE2YbYrNmF2Kkg2KfZhNil2YHYsdmK2YLZitipIDEy">
+                    <img src="12caf.jpg.jpeg" alt="Match">
+                    <div class="play-icon">▶</div>
+                    <div class="vid-card-overlay">
+                        <h4>تتويج الأهلي بالنجمة الإفريقية</h4>
+                        <div class="vid-card-meta"> • منذ أسبوع</div>
+                    </a>
+                    </div>
+                </div>
+                <div class="vid-card">
+                    <a href="https://www.youtube.com/watch?v=-KQeCQrvVlY&pp=ygVc2KzZhdmK2Lkg2KPZh9iv2KfZgSDYp9mE2YbYp9iv2Yog2KfZhNij2YfZhNmKINmB2Yog2KjYt9mI2YTYqSDYp9mE2K_ZiNix2Yog2KfZhNmF2LXYsdmKIDIwMjY%3D">
+                    <img src="https://24masr.com/wp-content/uploads/2026/04/1775943097_photo-2026-03-21-23-24-19-69daaaf00f7eb-780x470-1.jpg" alt="Match">
+                    <div class="play-icon">▶</div>
+                    <div class="vid-card-overlay">
+                        <h4> جميع أهداف النادي الأهلي في بطولة الدوري المصري   2025</h4>
+                        <div class="vid-card-meta"> • منذ شهر</div>
+                    </a>
+                    </div>
+                </div>
+                <div class="vid-card">
+                    <a href="https://www.youtube.com/watch?v=3CvAff4eN9k&pp=ygU32KrYtdiv2YrYp9iqINin2YTYtNmG2KfZiNmKINin2YTYrdin2LPZhdipICB3aXRoIGFsYWhseQ%3D%3D">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfg_Dz5ETX1_XM4EuuUQbpxLMT9QCtAedTzg&s" alt="Match">
+                    <div class="play-icon">▶</div>
+                    <div class="vid-card-overlay">
+                        <h4>تصديات الشناوي الحاسمة 2025</h4>
+                        <div class="vid-card-meta"> • منذ شهرين</div>
+                    </a>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="video-slider-title">كواليس غرفة الملابس (Inside Ahly)</h2>
+            <div class="video-slider">
+                <div class="vid-card">
+                    <a href="https://www.youtube.com/watch?v=V6uwg-GDN3I&pp=ygUsPtmD2YjYp9mE2YrYsyDYutix2YHYqSDYp9mE2YXZhNin2KjYsyBhbGFobHk%3D">
+                    <img src="https://i.ytimg.com/vi/V6uwg-GDN3I/hqdefault.jpg" alt="Inside">
+                    <div class="play-icon">▶</div>
+                    <div class="vid-card-overlay">
+                        <h4> كواليس غرفة الملابس  </h4>
+                        <div class="vid-card-meta"> • حصري</div>
+                    </a>
+                    </div>
+                </div>
+                <div class="vid-card">
+                    <a href="https://youtu.be/DF_meX4bw9U">
+                    <img src="https://cnn-arabic-images.cnn.io/cloudinary/image/upload/w_1920,c_scale,q_auto/cnnarabic/2025/01/30/images/288937.jpg" alt="Inside">
+                    <div class="play-icon">▶</div>
+                    <div class="vid-card-overlay">
+                        <h4>للقاهرة لون واحد .. لإفريقيا بطل واحد</h4>
+                        <div class="vid-card-meta"> • حصري</div>
+                    </a>
+                    </div>
+                </div>
+                <div class="vid-card">
+                    <a href="https://www.youtube.com/watch?v=MAfV2kHXAW8&pp=ygUUINil2YXYp9mFINi52KfYtNmI2LE%3D">
+                    <img src="https://alahly-images.s3.us-east-2.amazonaws.com/Article/original/431253889_952988929528709_6944862868287592324_n-6601e43d50982.jpg" alt="Inside">
+                    <div class="play-icon">▶</div>
+                    <div class="vid-card-overlay">
+                        <h4>   إمام عاشور</h4>
+                        <div class="vid-card-meta"> • وثائقي قصير</div>
+                    </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>

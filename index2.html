@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>النادي الأهلي </title>
+    <link rel="stylesheet" href="home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Tajawal:wght@400;700;900&display=swap"
+        rel="stylesheet">
+</head>
+<style>
+    @media screen and (max-width: 768px) 
+    {
+
+        .top-nav .container {
+            justify-content: center;
+        }
+
+        .top-links {
+            display: none;
+        }
+
+        .container-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+            height: 70px;
+        }
+
+        .menu-icon {
+            display: flex !important;
+            order: 1;
+            margin: 0;
+            z-index: 100;
+        }
+
+        .menu-icon span {
+            width: 25px;
+            height: 3px;
+            background: #000;
+            margin: 2px 0;
+        }
+
+        .logo-sec {
+            order: 2;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .royal-logo {
+            height: 55px;
+            margin-top: 0;
+            transform: none;
+        }
+
+        .search-section {
+            order: 3;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .search-wrapper {
+            width: 100px;
+            padding: 5px;
+        }
+
+        #searchInput {
+            font-size: 10px;
+        }
+
+        .nav-menu {
+            display: none !important;
+        }
+
+        .hero-text h1 {
+            font-size: 30px !important;
+            line-height: 1.2;
+        }
+
+        .hero-btns {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+
+        .hero-btns a {
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+    }
+
+    .menu-icon {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        cursor: pointer;
+        z-index: 1001;
+        padding: 5px;
+    }
+
+    .menu-icon span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background-color: #000;
+        transition: 0.3s;
+    }
+
+    .side-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100%;
+        background-color: #fff;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        z-index: 2000;
+        transition: 0.4s ease-in-out;
+        padding: 60px 20px;
+    }
+
+    .side-menu.active {
+        right: 0;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 30px;
+        cursor: pointer;
+        color: #000;
+    }
+
+    .side-links a {
+        display: block;
+        padding: 15px 0;
+        text-decoration: none;
+        color: #000;
+        font-weight: 900;
+        font-size: 18px;
+        border-bottom: 1px solid #eee;
+        text-align: right;
+    }
+
+    .side-links a:hover {
+        color: #ff0000;
+    }
+
+    .container-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+        height: 80px;
+    }
+
+    /* تنظيف الـ CSS بناءً على استفسارك */
+
+    /* الـ container الأساسي هو اللي بيتحكم في توزيع الكفتين */
+    .main-nav .container {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        height: 100px;
+        direction: rtl;
+    }
+
+    /* الكتلة اللي على اليمين (لوجو + روابط) */
+    .nav-right-group {
+        display: flex !important;
+        align-items: center !important;
+        gap: 40px !important;
+        /* دي المسافة اللي بتخلي اللوجو والكلمات لزق في بعض */
+    }
+
+    /* تعديل الـ Class اللي سألت عليه عشان ميبوظش الشكل */
+    .right-group {
+        display: none !important;
+        /* بنخفيه في الديسكتوب عشان المنيو أيكون متلخبطش المكان */
+    }
+
+    /* الروابط */
+    .nav-menu {
+        display: flex !important;
+        gap: 25px !important;
+    }
+
+    .nav-menu a {
+        font-weight: 900;
+        font-size: 18px;
+        color: #000;
+        text-decoration: none;
+    }
+
+    /* البحث أقصى الشمال */
+    .nav-left-group {
+        display: flex !important;
+    }
+
+    .search-wrapper {
+        background: #f2f2f2 !important;
+        border-radius: 50px !important;
+        padding: 8px 18px !important;
+        border: 1px solid #ddd !important;
+        display: flex !important;
+        width: 250px;
+    }
+
+    /* ميديا كويري للموبايل عشان الـ right-group تظهر تاني لو محتاجها */
+    @media (max-width: 768px) {
+        .nav-menu {
+            display: none !important;
+        }
+
+        .right-group {
+            display: flex !important;
+        }
+    }
+
+
+
+    .menu-icon {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        cursor: pointer;
+    }
+
+    .menu-icon span {
+        width: 22px;
+        height: 2px;
+        background: #000;
+    }
+
+    .royal-logo {
+        height: 60px;
+        width: auto;
+    }
+
+    .search-section {
+        display: flex;
+        align-items: center;
+    }
+
+    .search-wrapper {
+        display: flex;
+        align-items: center;
+        background: #f2f2f2;
+        border-radius: 20px;
+        padding: 5px 15px;
+        width: 150px;
+    }
+
+    .search-wrapper input {
+        border: none;
+        background: none;
+        outline: none;
+        width: 100%;
+        font-size: 12px;
+    }
+
+    /* تعديل مكان اللوجو والبحث فقط */
+
+    .main-nav .container {
+        display: flex !important;
+        justify-content: space-between !important;
+        /* بيزق اليمين يمين والشمال شمال */
+        align-items: center !important;
+        height: 100px;
+        padding: 0 20px !important;
+        /* مسافة بسيطة من الأطراف عشان ميبقاش لزق في الشاشة */
+        direction: rtl !important;
+    }
+
+    /* كتلة اليمين: اللوجو والمنيو */
+    .nav-right-group {
+        display: flex !important;
+        align-items: center !important;
+        gap: 50px !important;
+        /* المسافة بين اللوجو والروابط */
+        margin-right: 0 !important;
+        /* ضمان الالتصاق بأقصى اليمين */
+    }
+
+    .royal-logo {
+        height: 75px !important;
+        /* مقاس اللوجو */
+        width: auto;
+        display: block;
+    }
+
+    /* كتلة الشمال: البحث */
+    .nav-left-group {
+        margin-left: 0 !important;
+        /* ضمان الالتصاق بأقصى الشمال */
+    }
+
+    .search-wrapper {
+        display: flex !important;
+        align-items: center !important;
+        background: #f2f2f2 !important;
+        border: 1px solid #ddd !important;
+        border-radius: 50px !important;
+        padding: 8px 15px !important;
+        width: 250px !important;
+    }
+
+    /* لإلغاء أي توزيع قديم كان بيجيب اللوجو في النص */
+    .container-nav {
+        display: contents !important;
+    }
+
+    .search-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+
+
+    .menu-icon {
+        display: none;
+        flex-direction: column;
+        gap: 4px;
+        cursor: pointer;
+    }
+
+    .menu-icon span {
+        width: 25px;
+        height: 3px;
+        background: #000;
+    }
+
+    /* --- قسم البطولات الجديد --- */
+    .titles-section {
+        padding: 60px 20px;
+        background: #ffffff;
+        text-align: center;
+    }
+
+    .section-heading {
+        font-family: 'Tajawal', sans-serif;
+        font-weight: 900;
+        font-size: 28px;
+        color: #000;
+        margin-bottom: 40px;
+        position: relative;
+        display: inline-block;
+    }
+
+    .section-heading::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background: #ba0000;
+    }
+
+    .titles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .title-card {
+        background: #a10a0a;
+        padding: 30px 15px;
+        border-radius: 15px;
+        transition: 0.3s;
+        border-bottom: 4px solid #eee;
+    }
+
+    .title-card:hover {
+        transform: translateY(-10px);
+        border-color: #ff0000;
+        background: #fff;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .title-icon {
+        font-size: 40px;
+        margin-bottom: 15px;
+        display: block;
+    }
+
+    .title-number {
+        display: block;
+        font-family: 'Oswald', sans-serif;
+        font-size: 35px;
+        color: #000000;
+        line-height: 1;
+    }
+
+    .title-name {
+        display: block;
+        font-family: 'Tajawal', sans-serif;
+        font-weight: 700;
+        font-size: 16px;
+        color: #000000;
+        margin-top: 5px;
+    }
+
+    @media (max-width: 480px) {
+        .titles-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .title-number {
+            font-size: 28px;
+        }
+    }
+</style>
+
+<body>
+
+    <div id="sideDrawer" class="side-menu">
+        <a href="javascript:void(0)" class="close-btn" onclick="toggleMenu()">&times;</a>
+        <nav class="side-links">
+            <a href="index.html">الرئيسية</a>
+            <a href="champions.html">تاريخ البطولات</a>
+            <a href="club.html">نادي القرن</a>
+            <a href="team1.html">الفريق الأول</a>
+        </nav>
+    </div>
+
+    <header class="rm-style-header">
+        <div class="top-nav">
+            <div class="container">
+                <div class="top-links">
+                    <a href="fans.html">المشجعين</a>
+                </div>
+                <div class="top-auth">
+                    <a href="login.html" style="color: rgb(255, 255, 255); text-decoration:none;">تسجيل الدخول </a>
+                </div>
+                <div class="top-auth">
+                </div>
+            </div>
+        </div>
+
+        <div class="main-nav">
+            <div class="container-nav">
+                <div class="right-group">
+                    <div class="menu-icon" onclick="toggleMenu()">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <a href="index.html">
+                    </a>
+                </div>
+                <div class="container">
+                    <div class="nav-right-group">
+                        <a href="index.html">
+                            <img src="elahly_logo.jpg" class="royal-logo" alt="Al Ahly Logo">
+                        </a>
+                        <nav class="nav-menu">
+                            <a href="news.html">الأخبار</a>
+                            <a href="champions.html">البطولات</a>
+                            <a href="matches.html">المباريات</a>
+                            <a href="team1.html">الفريق الأول</a>
+                            <a href="club.html">النادي</a>
+                        </nav>
+                    </div>
+
+                    <div class="nav-left-group">
+                        <div class="search-wrapper">
+                            <input type="text" id="searchInput" placeholder="ابحث هنا...">
+                            <button class="search-btn">⌕</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </header>
+
+    <section class="royal-hero">
+        <img src="https://static2.gensler.com/uploads/hero_element/25020/thumb_desktop/thumbs/project-al-ahly-stadium-01-2000x1125_1739473327_1024x576.jpg"
+            class="hero-image" alt="صورة ملعب الأهلي">
+        <div class="hero-overlay">
+            <div class="hero-text">
+                <span class="category-tag">نادي القرن</span>
+                <h1>الأهلي فوق الجميع</h1>
+                <div class="hero-btns">
+                    <a href="news.html" class="btn-primary">آخر الأخبار</a>
+                    <a href="videos.html" class="btn-outline">شاهد الملخصات</a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="titles-section">
+        <h2 class="section-heading">ألقاب تاريخية 156</h2>
+        <div class="titles-grid">
+            <div class="title-card">
+                <span class="title-icon"></span>
+                <span class="title-number">45</span>
+                <span class="title-name">الدوري المصري</span>
+            </div>
+            <div class="title-card">
+                <span class="title-icon"></span>
+                <span class="title-number">12</span>
+                <span class="title-name">دوري أبطال أفريقيا</span>
+            </div>
+            <div class="title-card">
+                <span class="title-icon"></span>
+                <span class="title-number">39</span>
+                <span class="title-name">كأس مصر</span>
+            </div>
+            <div class="title-card">
+                <span class="title-icon"></span>
+                <span class="title-number">4</span>
+                <span class="title-name">برونزية المونديال</span>
+            </div>
+            <div class="title-card">
+                <span class="title-icon"></span>
+                <span class="title-number">1</span>
+                <span class="title-name">كأس الأفرو أسيوية </span>
+            </div>
+            <div class="title-card">
+                <span class="title-icon"></span>
+                <span class="title-number">1</span>
+                <span class="title-name"> كأس الجمهورية العربية المتحدة</span>
+            </div>
+            <div class="title-card">
+                <span class="title-icon"></span>
+                <span class="title-number">7</span>
+                <span class="title-name"> كأس السلطان حسين
+
+                </span>
+            </div>
+            <div class="title-card">
+                <span class="title-icon"></span>
+                <span class="title-number">1</span>
+                <span class="title-name">كأس الاتحاد المصري لكرة القدم
+                </span>
+
+            </div>
+            <div class="title-card">
+                <span class="title-icon"></span>
+                <span class="title-number">1</span>
+                <span class="title-name">كأس أفريقيا وآسيا وأوقيانوسيا
+
+                </span>
+            </div>
+            <div class="title-card">
+                <span class="title-icon"></span>
+                <span class="title-number">4</span>
+                <span class="title-name">كأس السلطان حسين
+
+                </span>
+            </div>
+            <div class="title-card">
+                <span class="title-icon"></span>
+                <span class="title-number">4</span>
+                <span class="title-name">بطولات الأندية العربية
+
+                </span>
+            </div>
+            <div class="title-card">
+                <span class="title-icon"></span>
+                <span class="title-number">8</span>
+                <span class="title-name">كأس السوبر الإفريقى
+
+                </span>
+            </div>
+            <div class="title-card">
+                <span class="title-icon"></span>
+                <span class="title-number">16</span>
+                <span class="title-name"> دورى القاهرة
+
+                </span>
+            </div>
+            <div class="title-card">
+                <span class="title-icon"></span>
+                <span class="title-number">16</span>
+                <span class="title-name">كأس السوبر المصري
+
+                </span>
+            </div>
+            <div class="title-card">
+                <span class="title-icon"></span>
+                <span class="title-number">1</span>
+                <span class="title-name">كأس الكونفدرالية
+
+                </span>
+            </div>
+        </div>
+        <!-- ______________________________________________________________________________________________________________________________   -->
+
+        <div class="next-match-bar">
+            <div class="container">
+                <div class="match-info-wrapper">
+                    <div class="match-details">
+                        <div class="match-competition">الدوري المصري الممتاز - الجولة 15</div>
+                        <div class="match-teams">
+                            <span>الأهلي</span>
+                            <img src="elahly_logo.jpg" alt="Ahly">
+                            <span class="match-vs">VS</span>
+                            <img src="https://ssl.gstatic.com/onebox/media/sports/logos/optimized/RDTXHVLGhO3Emt27QslOCw_96x96.png"
+                                alt="Zamalek" style="filter: drop-shadow(0 0 2px #ffffff00);">
+                            <span>الزمالك</span>
+                        </div>
+                    </div>
+                    <div class="match-details" style="text-align: center;">
+                        <div class="match-date-time">السبت 5/2
+                            الميعاد 00 : 02   </div>
+                        <div class="match-venue">استاد القاهرة الدولي</div>
+                    </div>
+                    <div class="match-action">
+                        <a href="matches.html" class="btn btn-primary">شراء التذاكر</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="section section-grey">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">أحدث الأخبار</h2>
+                    <a href="news.html" class="section-more-link">كل الأخبار &larr;</a>
+                </div>
+
+                <div class="news-grid">
+                    <a href="news.html" class="news-card">
+                        <div class="news-image-wrap">
+                            <img src="https://www.radiomars.ma/wp-content/uploads/2025/07/%D8%B1%D8%B6%D8%A7-%D8%B3%D9%84%D9%8A%D9%85-1024x536-1.webp" alt="Ahly Super Cup">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">الفريق الأول • منذ 2 ساعة</div>
+                            <h3 style="font-weight: 900; font-size: 28px;"> موقف الأهلي من عودة رضا سليم
+                            </h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 16px;">تحدث أحمد
+                                شوبير عبر إذاعةأون سبورت اف امعن مستقبل لاعب الأهلي المعار رضا سليم، مؤكدًا أن النادي
+                                سيعيد تقييم موقفه خلال الفترة المقبلة بعد تألقه مع الجيش الملكي ووصوله لنهائي بطولة
+                                إفريقيا، رغم عدم مشاركته أساسيًا في البداية قبل أن يثبت نفسه ويقدم مستويات قوية.
+
+
+                                وأشار شوبير إلى أن هناك أصواتًا داخل الأهلي تطالب بعودة اللاعب، في ظل ما يقدمه من أداء
+                                مميز، لكنه أوضح أن التجربة السابقة بين اللاعب والمدير الفني مارسيل كولر لم تكن الأفضل،
+                                حيث كان اللاعب غير راضٍ عن طريقة التعامل معه، وهو ما أثر على استمراره داخل الفريق قبل
+                                خروجه للإعارة.
+
+                                وانتقد شوبير تأثر إدارة الأهلي بآراء السوشيال ميديا، مؤكدًا أن ذلك تسبب في قرارات غير
+                                مستقرة، مستشهدًا بما حدث مع بعض اللاعبين مثل جراديشار وكاموتش، حيث تم الاستغناء عنهم رغم
+                                تكبد النادي خسائر مالية، في ظل عدم وجود مهاجم بنفس جودة وسام أبو علي.
+
+                                وأوضح أن ملف رضا سليم لا يزال مفتوحًا، سواء بعودته أو تجديد إعارته تمهيدًا لبيعه، مشيرًا
+                                إلى أن الأهلي يتحمل جزءًا من رواتب بعض اللاعبين المعارين مثل أشرف داري، وهو ما يمثل
+                                عبئًا ماليًا على النادي.
+
+                                واختتم شوبير حديثه بالتأكيد على ثقته في إدارة الأهلي برئاسة محمود الخطيب، مشددًا على
+                                ضرورة تحسين إدارة ملف الصفقات واللاعبين المعارين، وعدم التسرع في التعاقد مع لاعبين دون
+                                متابعة دقيقة لمستواهم. </p>
+                        </div>
+                    </a>
+
+                    <div class="side-news">
+                        <a href="news.html" class="mini-news-card">
+                            <img src="https://media.elbalad.news/2024/10/large/898/9/469.jpeg" alt="News Image">
+                            <div class="mini-news-card-content">
+                                <div class="news-meta">التدريبات</div>
+                                <h4>تدريبات قوية لحراس المرمى    </h4>
+                            </div>
+                        </a>
+                        <a href="news.html" class="mini-news-card">
+                            <img src="11caf.jpg.jpeg" alt="News Image">
+                            <div class="mini-news-card-content">
+                                <div class="news-meta">مجلس الإدارة</div>
+                                <h4>الخطيب يهنئ اللاعبين بعد الأداء الرجولي والانتصار الأفريقي</h4>
+                            </div>
+                        </a>
+                        <a href="news.html" class="mini-news-card">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1TeA92KTbCxwLKcZVAqVCLt59VBFeV15rjg&s" alt="News Image">
+                            <div class="mini-news-card-content">
+                                <div class="news-meta">قطاع الناشئين</div>
+                                <h4>أهلي 2005 يفوز على الإسماعيلي بثلاثية نظيفة في دوري الجمهورية</h4>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-dark">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">الأهلي TV</h2>
+                    <a href="videos.html" class="section-more-link" style="color:var(--bg-white)">المزيد من الفيديوهات
+                        &larr;</a>
+                </div>
+
+                <div class="videos-grid">
+                    <a href="videos.html" class="video-card">
+                        <img src="3caf.jpg.jpeg" alt="Video Cover">
+                        <div class="video-overlay">
+                            <div class="play-btn">▶</div>
+                            <h4>كواليس التتويج بدوري أبطال أفريقيا من داخل غرفة الملابس</h4>
+                        </div>
+                    </a>
+                    <a href="videos.html" class="video-card">
+                        <img src="9caf.jpg.jpeg" alt="Video Cover">
+                        <div class="video-overlay">
+                            <div class="play-btn">▶</div>
+                            <h4>أهداف مباراة الأهلي والزمالك - نهائي القرن 2020</h4>
+                        </div>
+                    </a>
+                    <a href="videos.html" class="video-card">
+                        <img src="8caf.jpg.jpeg" alt="Video Cover">
+                        <div class="video-overlay">
+                            <div class="play-btn">▶</div>
+                            <h4>لقاء حصري مع مارسيل كولر والحديث عن طموحات الموسم الجديد</h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="sponsors-bar">
+                <div class="container">
+                    <div class="sponsors-grid">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" alt="Adidas">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Etisalat_logo.svg" alt="Etisalat">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/FAB_Logo.svg" alt="FAB">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Lipton_logo.svg" alt="Lipton">
+                    </div>
+                </div>
+            </div>
+
+            <footer class="mega-footer">
+                <div class="container">
+                    <div class="footer-grid">
+                        <div class="footer-brand">
+                            <img src="elahly_logo.jpg" alt="Al Ahly SC"
+                                style="filter: drop-shadow(0 0 10px rgba(0,0,0,0.5)); border-radius: 10px;">
+                            <p>النادي الأهلي المصري هو النادي الأنجح في تاريخ قارة أفريقيا والوطن العربي، وتأسس عام 1907
+                                ليكون النادي الرائد في تقديم المواهب الكروية وصناعة الإنجازات العالمية على كافة الأصعدة.
+                            </p>
+                        </div>
+                        <div class="footer-col">
+                            <h4>الفرق الرياضية</h4>
+                            <ul class="footer-links">
+                                <li><a href="team1.html">الفريق الأول لكرة القدم</a></li>
+                                <li><a href="#">كرة السلة</a></li>
+                                <li><a href="#">كرة اليد</a></li>
+                                <li><a href="#">الكرة الطائرة</a></li>
+                                <li><a href="#">قطاع الناشئين</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-col">
+                            <h4>النادي</h4>
+                            <ul class="footer-links">
+                                <li><a href="club.html">تاريخ النادي</a></li>
+                                <li><a href="#">مجلس الإدارة</a></li>
+                                <li><a href="champions.html">الإنجازات والبطولات</a></li>
+                                <li><a href="#">فروع النادي</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-col">
+                            <h4>روابط سريعة</h4>
+                            <ul class="footer-links">
+                                <li><a href="fans.html">بطاقة المشجع</a></li>
+                                <li><a href="matches.html">تذاكر المباريات</a></li>
+                                <li><a href="#">المتجر الرسمي</a></li>
+                                <li><a href="#">تواصل معنا</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="footer-bottom">
+                        <p>&copy; 2026 النادي الأهلي الرياضي. جميع الحقوق محفوظة.<br>This website created by Abdalla Elsharkawi</p>
+                        <div class="social-links">
+                            <a href="https://facebook.com">f</a>
+                            <a href="https://twitter.com">X</a>
+                            <a href="https://linkedin.com">in</a>
+                            <a href="https://www.youtube.com/@Alahly">yt</a>
+                            <a href="https://instagram.com">inst</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        </section>
+
+
+        <script src="script.js"></script>
+        <script>
+            function toggleMenu() {
+                const drawer = document.getElementById("sideDrawer");
+                drawer.classList.toggle("active");
+            }
+        </script>
+</body>
+
+</html>

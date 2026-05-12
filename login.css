@@ -1,0 +1,200 @@
+/* تنسيق صفحة الدخول الفخمة */
+.login-page-bg {
+    background: #fdfdfd; /* خلفية بيضاء صريحة وفخمة */
+    min-height: 100vh;
+}
+
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px; /* مسافة من الهيدر */
+}
+
+.login-card {
+    background: #fff;
+    width: 100%;
+    max-width: 480px;
+    padding: 50px;
+    border: 1px solid #000; /* حدود سوداء حادة زي ريال مدريد */
+    text-align: center;
+}
+
+.login-brand img {
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.login-brand h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+}
+
+/* ستايل الـ Floating Labels */
+.input-field {
+    position: relative;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    border-bottom: 1px solid #ccc; /* خط تحت المدخلات فقط */
+    outline: none;
+    font-weight: bold;
+    font-size: 14px;
+    background: transparent;
+    transition: 0.3s;
+}
+
+.input-field label {
+    position: absolute;
+    top: 12px;
+    left: 0;
+    color: #999;
+    font-weight: 700;
+    font-size: 12px;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+/* حركة الأنيميشن عند الكتابة */
+.input-field input:focus, 
+.input-field input:valid {
+    border-bottom: 2px solid #ff0000; /* خط أحمر أهلاوي عند الكتابة */
+}
+
+.input-field input:focus + label, 
+.input-field input:valid + label {
+    top: -15px;
+    font-size: 10px;
+    color: #000;
+}
+
+.login-helpers {
+    text-align: right;
+    margin-bottom: 30px;
+}
+
+.login-helpers a {
+    color: #000;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 900;
+}
+
+.login-btn-main {
+    width: 100%;
+    padding: 18px;
+    background: #000;
+    color: #fff;
+    border: none;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.login-btn-main:hover {
+    background: #ff0000; /* تغيير اللون للأحمر عند اللمس */
+    transform: scale(1.02);
+}
+
+.login-footer {
+    margin-top: 30px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #666;
+}
+
+.login-footer a {
+    color: #ff0000;
+    text-decoration: none;
+    margin-right: 5px;
+}
+/* شاشات الموبايل (أقل من 768 بيكسل) */
+/* الإعدادات الأساسية للموبايل */
+@media screen and (max-width: 768px) {
+    
+    /* 1. الشريط الأسود اللي فوق: نخليه بسيط جداً */
+    .top-nav .container {
+        justify-content: center; /* سنتر الكلام */
+    }
+    .top-links {
+        display: none; /* إخفاء روابط PLUS و STORE في الموبايل لعدم الزحمة */
+    }
+
+    /* 2. الهيدر الأبيض الرئيسي: توزيع ثلاثي واضح */
+    .container-nav {
+        display: flex;
+        justify-content: space-between; /* عنصر يمين، عنصر نص، عنصر شمال */
+        align-items: center;
+        padding: 0 10px;
+        height: 70px;
+    }
+
+    /* 3. الثلاث شرط (اليمين): نكبرهم ونبينهم */
+    .menu-icon {
+        display: flex !important; /* تأكيد ظهورها */
+        order: 1; /* أول عنصر على اليمين */
+        margin: 0;
+        z-index: 100;
+    }
+    .menu-icon span {
+        width: 25px;
+        height: 3px;
+        background: #000;
+        margin: 2px 0;
+    }
+
+    /* 4. اللوجو (المنتصف): نخليه في النص بالظبط */
+    .logo-sec {
+        order: 2;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .royal-logo {
+        height: 55px; /* صغرناه شوية عشان الموبايل */
+        margin-top: 0;
+        transform: none;
+    }
+
+    /* 5. البحث (الشمال): يظهر كأيقونة أو بوكس صغير جداً */
+    .search-section {
+        order: 3; /* آخر عنصر على الشمال */
+        display: flex;
+        justify-content: flex-end;
+    }
+    .search-wrapper {
+        width: 100px; /* بوكس صغير جداً */
+        padding: 5px;
+    }
+    #searchInput {
+        font-size: 10px;
+    }
+
+    /* 6. إخفاء المنيو العريضة: دي أهم خطوة عشان الزراير متبوظش */
+    .nav-menu {
+        display: none !important; /* بنخفي (News, Trophies, Team) من الهيدر */
+    }
+
+    /* 7. الـ Hero Section (الصورة اللي تحت الهيدر) */
+    .hero-text h1 {
+        font-size: 30px !important; /* تصغير العنوان الكبير */
+        line-height: 1.2;
+    }
+    .hero-btns {
+        display: flex;
+        flex-direction: column; /* الزراير تحت بعض في الموبايل */
+        gap: 10px;
+    }
+    .hero-btns a {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}

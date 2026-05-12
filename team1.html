@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Al Ahly SC - First Team</title>
+    <style>
+        :root {
+            --primary-red: #ff0000;
+            --dark-red: #800000;
+            --white: #ffffff;
+            --black: #000000;
+            --gray: #f4f4f4;
+        }
+
+        body {
+            background-color: var(--white);
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- Header (تم تصغيره) --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 15px;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 2000;
+            box-sizing: border-box;
+        }
+
+        .header-left {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar {
+            background: var(--gray);
+            border-radius: 20px;
+            padding: 10px 25px;
+            display: flex;
+            width: 100%;
+            max-width: 150px;
+        }
+
+        .search-bar input {
+            border: none;
+            background: none;
+            outline: none;
+            width: 100%;
+            text-align: right;
+            font-size: 13px;
+        }
+
+        .header-center {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-logo {
+            height: 80px;
+        }
+
+        /* صغرنا اللوجو */
+
+        .header-right {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .menu-toggle span {
+            width: 22px;
+            height: 2px;
+            background: var(--black);
+            border-radius: 3px;
+        }
+
+        /* --- Side Menu --- */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -280px;
+            width: 260px;
+            height: 100%;
+            background: var(--white);
+            z-index: 3000;
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            padding: 60px 20px;
+            box-sizing: border-box;
+        }
+
+        .side-menu.active {
+            right: 0;
+        }
+
+        .menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2500;
+            display: none;
+            backdrop-filter: blur(3px);
+        }
+
+        .menu-overlay.active {
+            display: block;
+        }
+
+        .side-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .side-links li {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #1b1414;
+        }
+
+        .side-links a {
+            text-decoration: none;
+            color: var(--black);
+            font-size: 18px;
+            font-weight: bold;
+            display: block;
+            padding: 8px 0;
+            transition: 0.3s;
+        }
+
+        .side-links a:hover {
+            color: var(--primary-red);
+            padding-right: 10px;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        /* --- Slider Section (تم تصغير الحجم) --- */
+        .team-slider-section {
+            padding-top: 70px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+        }
+
+        .slider-container {
+            width: 100%;
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            padding: 30px 0;
+            scrollbar-width: none;
+        }
+
+        .slider-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* الحساب الجديد للسنترة: 50% ناقص نص عرض الكارت الجديد (110px) */
+        .slider-container::before,
+        .slider-container::after {
+            content: '';
+            flex: 0 0 calc(50% - 110px);
+        }
+
+        .player-card {
+            flex: 0 0 220px;
+            /* العرض الجديد */
+            height: 330px;
+            /* الطول الجديد */
+            margin: 0 10px;
+            scroll-snap-align: center;
+            transition: 0.5s ease;
+            opacity: 0.3;
+            transform: scale(0.85);
+        }
+
+        .player-card.active {
+            opacity: 1;
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            background: #433636;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, var(--primary-red), var(--dark-red));
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        .player-card.active .card-bg {
+            opacity: 1;
+        }
+
+        .player-img {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 80%;
+            transition: 0.5s;
+            z-index: 2;
+        }
+
+        .player-card.active .player-img {
+            height: 90%;
+        }
+
+        .info {
+            position: absolute;
+            bottom: 15px;
+            width: 100%;
+            text-align: center;
+            z-index: 3;
+        }
+
+        .info h3 {
+            margin: 0;
+            font-size: 19px;
+            color: rgb(255, 255, 255);
+        }
+
+        .info span {
+            font-size: 13px;
+        }
+
+        .player-card.active .info {
+            color: var(--white);
+        }
+
+        /* --- Controls --- */
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            gap: 30px;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: var(--white);
+            color: var(--black);
+            border: 2px solid hsl(0, 0%, 100%);
+            cursor: pointer;
+            font-size: 22px;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-btn:hover {
+            background: var(--primary-red);
+            color: var(--white);
+            border-color: var(--primary-red);
+        }
+
+        .nav-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 1px solid #000000;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info {
+            color: var(--dark-red);
+        }
+
+        /* --- Quick Grid Section (تنسيق قسم المربعات) --- */
+        .players-grid-section {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .grid-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: var(--dark-red);
+        }
+
+        .players-grid {
+            display: grid;
+            /* بيقسم المربعات تلقائياً حسب عرض الشاشة */
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 15px;
+        }
+
+        .grid-item {
+            text-decoration: none;
+            background: var(--white);
+            border: 1px solid #ffffff;
+            border-radius: 12px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        /* تأثير عند مرور الماوس على المربع */
+        .grid-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-red);
+            box-shadow: 0 6px 12px rgba(255, 0, 0, 0.1);
+        }
+
+        .grid-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+            background: #f0f0f0;
+            margin-bottom: 8px;
+        }
+
+        .grid-item span {
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--black);
+            text-align: center;
+        }
+
+        /* --- تنسيق قسم الجهاز الفني --- */
+        .staff-section {
+            padding: 60px 20px;
+            background: #f4f4f4;
+            /* خلفية رمادية فاتحة لتمييز القسم */
+            text-align: center;
+        }
+
+        .staff-grid {
+            display: grid;
+            /* بيظبط عدد الكروت تلقائياً حسب الشاشة */
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .staff-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: 0.3s ease;
+            position: relative;
+        }
+
+        .staff-card:hover {
+            transform: scale(1.03);
+            /* حركة تكبير بسيطة عند الوقوف بالماوس */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .staff-img-box {
+            width: 100%;
+            height: 250px;
+            background: #ddd;
+            overflow: hidden;
+        }
+
+        .staff-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* بيخلي الصورة تملأ المربع بدون تمطيط */
+        }
+
+        .staff-info {
+            padding: 20px;
+        }
+
+        .staff-role {
+            display: block;
+            color: #ff0000;
+            font-size: 12px;
+            font-weight: 900;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .staff-name {
+            display: block;
+            font-size: 18px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        /* --- تصميم كروت الجهاز الفني الحديث --- */
+        .staff-section {
+            padding: 60px 20px;
+            background-color: #ffffff;
+            /* خلفية غامقة عشان التصميم يبان */
+            text-align: center;
+        }
+
+        .staff-grid-modern {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .staff-card-v2 {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            /* طول الكارت */
+            border-radius: 20px;
+            overflow: hidden;
+            background-color: #1a1a1a;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .staff-card-v2:hover {
+            transform: translateY(-10px);
+        }
+
+        .staff-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* التدرج الأسود أسفل الصورة لإظهار النص */
+        .staff-overlay-v2 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            /* يغطي النصف السفلي بالتدرج */
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 10%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .staff-info-v2 {
+            text-align: center;
+        }
+
+        .staff-name-v2 {
+            color: #f1c40f;
+            /* لون ذهبي يشبه "بيس توروب" في الصورة */
+            font-size: 24px;
+            font-weight: 900;
+            margin: 0 0 5px 0;
+            font-family: 'Tajawal', sans-serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .staff-role-v2 {
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        /* للموبايل */
+        @media (max-width: 480px) {
+            .staff-card-v2 {
+                height: 350px;
+            }
+
+            .staff-name-v2 {
+                font-size: 20px;
+            }
+        }
+
+        /* تعديل للموبايل عشان الكروت تكون فوق بعض */
+        @media (max-width: 480px) {
+            .staff-grid {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+
+        /* تعديل المربعات للموبايل عشان تظهر 3 في كل صف */
+        @media (max-width: 480px) {
+            .players-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+        }
+
+        /* --- Mobile Adjustments --- */
+        @media (max-width: 480px) {
+            .player-card {
+                flex: 0 0 180px;
+                height: 280px;
+            }
+
+            .slider-container::before,
+            .slider-container::after {
+                flex: 0 0 calc(50% - 90px);
+            }
+
+            .info h3 {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="menu-overlay" id="overlay"></div>
+    <div class="side-menu" id="sideMenu">
+        <div class="close-menu" id="closeBtn">&times;</div>
+        <ul class="side-links">
+            <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="champions.html">البطولات</a></li>
+            <li><a href="news.html">أخبار الفريق</a></li>
+            <li><a href="matches.html">جدول المباريات</a></li>
+
+        </ul>
+    </div>
+
+    <header>
+        <div class="header-left">
+            <div class="search-bar"><input type="text" placeholder="بحث..."></div>
+        </div>
+        <div class="header-center">
+            <img src="elahly_logo.jpg" class="nav-logo">
+        </div>
+        <div class="header-right">
+            <div class="menu-toggle" id="menuBtn">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </header>
+
+
+    <section class="team-slider-section">
+        <h1 class="section-heading">الفريق الأول </h1>
+
+        <div class="slider-container" id="slider">
+            <div class="player-card active">
+                <div class="card-inner">
+                    <div class="card-bg"></div>
+                    <img src="https://board.alahlyegypt.com/storage/players/9Aaf78oJjTMv3rqaDzE5BbEzPy7cJOREsLtoSxsy.png"
+                        class="player-img">
+                    <div class="info">
+                        <h3>محمد الشناوي</h3><span>حارس مرمى</span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="card-inner">
+                    <div class="card-bg"></div>
+                    <img src="https://board.alahlyegypt.com/storage/players/DYmoAxK5qK2Mol8wwLXWsCvT4DLOEwgQ4B2g5j3I.png"
+                        class="player-img">
+                    <div class="info">
+                        <h3>مصطفى شوبير</h3><span>حارس مرمى</span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="card-inner">
+                    <div class="card-bg"></div>
+                    <img src="https://www.alahlyegypt.com/api/proxy-image?url=https%3A%2F%2Fboard.alahlyegypt.com%2Fstorage%2Fplayers%2FpztKxNTSGeh32UjDaoZcpncxvj1Au8kLfkuQHNeC.png"
+                        class="player-img">
+                    <div class="info">
+                        <h3>محمد «سيحا» </h3><span>حارس مرمى </span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="card-inner">
+                    <div class="card-bg"></div>
+                    <img src="https://www.alahlyegypt.com/api/proxy-image?url=https%3A%2F%2Fboard.alahlyegypt.com%2Fstorage%2Fplayers%2Fvmw46qaf84myIvKajfHgvoNbhjkdyGMthzkwaPka.png"
+                        class="player-img">
+                    <div class="info">
+                        <h3> محمد هاني</h3><span>ظهير أيمن
+
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="card-inner">
+                    <div class="card-bg"></div>
+                    <img src="https://www.alahlyegypt.com/api/proxy-image?url=https%3A%2F%2Fboard.alahlyegypt.com%2Fstorage%2Fplayers%2FXT0rdA1HqsbxVlYoHGo4lsR3jeY9lfBq1zoNdkiy.png"
+                        class="player-img">
+                    <div class="info">
+                        <h3>أشرف داري
+
+                        </h3><span>مدافع </span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="card-inner">
+                    <div class="card-bg"></div>
+                    <img src="https://www.alahlyegypt.com/api/proxy-image?url=https%3A%2F%2Fboard.alahlyegypt.com%2Fstorage%2Fplayers%2FVlTp2R1RUSlSuT1TUIYX1WuBbF8uIx3x2IOC6LVr.png"
+                        class="player-img">
+                    <div class="info">
+                        <h3>أحمد رمضان «بيكهام»
+
+                        </h3><span>مدافع </span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="card-inner">
+                    <div class="card-bg"></div>
+                    <img src="https://www.alahlyegypt.com/api/proxy-image?url=https%3A%2F%2Fboard.alahlyegypt.com%2Fstorage%2Fplayers%2F0bTcnG7xo4hGTKT7blwYwFVxNizLUCsXvUUvZ2ag.png"
+                        class="player-img">
+                    <div class="info">
+                        <h3>ياسين مرعي
+
+                        </h3><span>مدافع </span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="card-inner">
+                    <div class="card-bg"></div>
+                    <img src="https://www.alahlyegypt.com/api/proxy-image?url=https%3A%2F%2Fboard.alahlyegypt.com%2Fstorage%2Fplayers%2F12yLNpiA1QXrODIY3QuIVWO2RvzE6BOiRz2f25dE.png"
+                        class="player-img">
+                    <div class="info">
+                        <h3> كريم فؤاد
+
+                        </h3><span>ظهير أيمن
+
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="card-inner">
+                    <div class="card-bg"></div>
+                    <img src="https://www.alahlyegypt.com/api/proxy-image?url=https%3A%2F%2Fboard.alahlyegypt.com%2Fstorage%2Fplayers%2FTnQnCqXffjRwZFiCyfhazbAhl4P9WheMtH1cEqCk.png"
+                        class="player-img">
+                    <div class="info">
+                        <h3> أحمد عيد
+
+                        </h3><span> ظهير أيمن
+
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="card-inner">
+                    <div class="card-bg"></div>
+                    <img src="https://www.alahlyegypt.com/api/proxy-image?url=https%3A%2F%2Fboard.alahlyegypt.com%2Fstorage%2Fplayers%2FhIuURKCkx1EHOF9Inley4569UVfHEWpMUXAU1zRO.png"
+                        class="player-img">
+                    <div class="info">
+                        <h3> عمرو الجزار
+
+                        </h3><span>مدافع </span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="card-inner">
+                    <div class="card-bg"></div>
+                    <img src="https://www.alahlyegypt.com/api/proxy-image?url=https%3A%2F%2Fboard.alahlyegypt.com%2Fstorage%2Fplayers%2FLdoYHK4r4A5VyX5MCPNZot1gpfdVymrq02fG0J6U.png"
+                        class="player-img">
+                    <div class="info">
+                        <h3> يوسف بلعمري
+
+                        </h3><span>ظهير أيسر
+
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="card-inner">
+                    <div class="card-bg"></div>
+                    <img src="https://www.alahlyegypt.com/api/proxy-image?url=https%3A%2F%2Fboard.alahlyegypt.com%2Fstorage%2Fplayers%2FFSYjioPOvgbHvs6lDQGXR8UkfcbTJxr4wADP2kNe.png"
+                        class="player-img">
+                    <div class="info">
+                        <h3>هادي رياض
+
+                        </h3><span>مدافع
+
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="card-inner">
+                    <div class="card-bg"></div>
+                    <img src="https://www.alahlyegypt.com/api/proxy-image?url=https%3A%2F%2Fboard.alahlyegypt.com%2Fstorage%2Fplayers%2FYRbUGYwKW3LLpGq5LLyBpKIoiZpKKgjQsfd5SI9Y.png"
+                        class="player-img">
+                    <div class="info">
+                        <h3>ياسر إبراهيم
+
+                        </h3><span>مدافع
+
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="card-inner">
+                    <div class="card-bg"></div>
+                    <img src="https://www.alahlyegypt.com/api/proxy-image?url=https%3A%2F%2Fboard.alahlyegypt.com%2Fstorage%2Fplayers%2Fvmw46qaf84myIvKajfHgvoNbhjkdyGMthzkwaPka.png"
+                        class="player-img">
+                    <div class="info">
+                        <h3> محمد هاني
+
+                        </h3><span>ظهير أيمن
+
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="card-inner">
+                    <div class="card-bg"></div>
+                    <img src="https://www.alahlyegypt.com/api/proxy-image?url=https%3A%2F%2Fboard.alahlyegypt.com%2Fstorage%2Fplayers%2F7Kspiwz9feAtHNauB83NVso7BauIk5NQBf1XqZod.png"
+                        class="player-img">
+                    <div class="info">
+                        <h3> أليو ديانج
+
+                        </h3><span> لاعب وسط مدافع
+
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="card-inner">
+                    <div class="card-bg"></div>
+                    <img src="https://www.alahlyegypt.com/api/proxy-image?url=https%3A%2F%2Fboard.alahlyegypt.com%2Fstorage%2Fplayers%2FeJ06R9nXlH4D3Zz8r3nvWWNC1k7VlT1iiuiQrk8o.png"
+                        class="player-img">
+                    <div class="info">
+                        <h3> محمد علي بن رمضان
+
+                        </h3><span> لاعب وسط مهاجم
+
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="card-inner">
+                    <div class="card-bg"></div>
+                    <img src="https://www.alahlyegypt.com/api/proxy-image?url=https%3A%2F%2Fboard.alahlyegypt.com%2Fstorage%2Fplayers%2F7GVYGJLBSoNQAeXEtvs07jV8nFWDXyHEf7G9rNqg.png"
+                        class="player-img">
+                    <div class="info">
+                        <h3>أحمد نبيل (كوكا)
+
+                        </h3><span> لاعب وسط
+
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="card-inner">
+                    <div class="card-bg"></div>
+                    <img src="https://www.alahlyegypt.com/api/proxy-image?url=https%3A%2F%2Fboard.alahlyegypt.com%2Fstorage%2Fplayers%2FmyYg4ScIuvtjBfwkjxiMOJ0Eghvu6lzKXF6Suxnh.png"
+                        class="player-img">
+                    <div class="info">
+                        <h3> إمام عاشور
+
+                        </h3><span>لاعب وسط هجومي
+
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="card-inner">
+                    <div class="card-bg"></div>
+                    <img src="https://www.alahlyegypt.com/api/proxy-image?url=https%3A%2F%2Fboard.alahlyegypt.com%2Fstorage%2Fplayers%2F6c795k3jch9TjaZr5BH3PVXD8zezek5IlGoGEbkU.png"
+                        class="player-img">
+                    <div class="info">
+                        <h3> مروان عطية
+
+                        </h3><span>لاعب وسط
+
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="card-inner">
+                    <div class="card-bg"></div>
+                    <img src="https://www.alahlyegypt.com/api/proxy-image?url=https%3A%2F%2Fboard.alahlyegypt.com%2Fstorage%2Fplayers%2FuJBfZz98IUyR5vIStMZBNviW8fx3rJrJ5KCYlC1m.png"
+                        class="player-img">
+                    <div class="info">
+                        <h3>محمد شريف
+
+                        </h3><span>مهاجم
+
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="card-inner">
+                    <div class="card-bg"></div>
+                    <img src="https://www.alahlyegypt.com/api/proxy-image?url=https%3A%2F%2Fboard.alahlyegypt.com%2Fstorage%2Fplayers%2F1xoJdwlU9lDGsZf8owAaBuy1mPJzoc4YvX5NJ2yo.png"
+                        class="player-img">
+                    <div class="info">
+                        <h3>أحمد السيد «زيزو»
+
+                        </h3><span> مهاجم
+
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="card-inner">
+                    <div class="card-bg"></div>
+                    <img src="https://www.alahlyegypt.com/api/proxy-image?url=https%3A%2F%2Fboard.alahlyegypt.com%2Fstorage%2Fplayers%2FkBQqUFuLLP2qj9wOzEFUyJSABE3ayf1UZjUYST2r.png"
+                        class="player-img">
+                    <div class="info">
+                        <h3>مروان عثمان
+
+                        </h3><span>مهاجم
+
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="card-inner">
+                    <div class="card-bg"></div>
+                    <img src="https://www.alahlyegypt.com/api/proxy-image?url=https%3A%2F%2Fboard.alahlyegypt.com%2Fstorage%2Fplayers%2F10pvchphksNYziwTnqymJ9JMloizJTejrQxSygnI.png"
+                        class="player-img">
+                    <div class="info">
+                        <h3> كامويش
+
+                        </h3><span>مهاجم
+
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="card-inner">
+                    <div class="card-bg"></div>
+                    <img src="https://www.alahlyegypt.com/api/proxy-image?url=https%3A%2F%2Fboard.alahlyegypt.com%2Fstorage%2Fplayers%2FxcLY1X26C5YaBDbyihFC79uahMwVJHCiWwPMjK1g.png"
+                        class="player-img">
+                    <div class="info">
+                        <h3>حسين الشحات
+
+                        </h3><span> جناح أيمن
+
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="card-inner">
+                    <div class="card-bg"></div>
+                    <img src="https://www.alahlyegypt.com/api/proxy-image?url=https%3A%2F%2Fboard.alahlyegypt.com%2Fstorage%2Fplayers%2FS1SoSjRVattmZ51UcH4QAB0Yl9mvD4OC9VmfS715.png"
+                        class="player-img">
+                    <div class="info">
+                        <h3> طاهر محمد طاهر
+
+                        </h3><span>جناح أيمن
+
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="card-inner">
+                    <div class="card-bg"></div>
+                    <img src="https://www.alahlyegypt.com/api/proxy-image?url=https%3A%2F%2Fboard.alahlyegypt.com%2Fstorage%2Fplayers%2FVPaiA71oYIEY2oJMqGyUrK71CGg7dBJ5d5DqCLvL.png"
+                        class="player-img">
+                    <div class="info">
+                        <h3>أشرف بن شرقي
+
+                        </h3><span> مهاجم
+
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="player-card">
+                <div class="card-inner">
+                    <div class="card-bg"></div>
+                    <img src="https://www.alahlyegypt.com/api/proxy-image?url=https%3A%2F%2Fboard.alahlyegypt.com%2Fstorage%2Fplayers%2FDrjweJt0k7jyQtcqtuOJfIOvHRNkUHfvTytQ03V5.png"
+                        class="player-img">
+                    <div class="info">
+                        <h3>محمود حسن «تريزيجيه»
+
+                        </h3><span>مهاجم
+
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="controls">
+            <button class="nav-btn" onclick="btnMove(1)">❮</button>
+            <button class="nav-btn" onclick="btnMove(-1)">❯</button>
+        </div>
+
+    </section>
+    <section class="staff-section">
+        <h1 class="section-heading">الجهاز الفني</h1>
+        <br>
+        <br>
+        <div class="staff-grid-modern">
+            <div class="staff-card-v2">
+                <img src="https://board.alahlyegypt.com/storage/technical_staff/gGbDjDnCp54CH4cQZfMZroIwuopai31jp6wn7tUe.png"
+                    alt="waled salah eldin " class="staff-photo">
+                <div class="staff-overlay-v2">
+                    <div class="staff-info-v2">
+                        <h3 class="staff-name-v2">وليد صلاح الدين
+                        </h3>
+                        <p class="staff-role-v2">مدير الكرة
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card-v2">
+                <img src="https://board.alahlyegypt.com/storage/technical_staff/jfp3dJGNx3kAub72gESfrMsaXk2TT3h70rssgJKo.png"
+                    alt=" torob" class="staff-photo">
+                <div class="staff-overlay-v2">
+                    <div class="staff-info-v2">
+                        <h3 class="staff-name-v2">ييس توروب
+                        </h3>
+                        <p class="staff-role-v2"> المدير الفني
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card-v2">
+                <img src="https://board.alahlyegypt.com/storage/technical_staff/v9POr5H9JVAcetqWzp8bOFuyK8SVPpBTevMYbmOQ.png"
+                    alt=" eimry sabetch" class="staff-photo">
+                <div class="staff-overlay-v2">
+                    <div class="staff-info-v2">
+                        <h3 class="staff-name-v2"> ايمري سابتش
+                        </h3>
+                        <p class="staff-role-v2">المدرب العام
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card-v2">
+                <img src="https://board.alahlyegypt.com/storage/technical_staff/j3glthvlFUABNdlF9uJfaxvK8lhC2mVjwOxzSPsQ.png"
+                    alt=" " class="staff-photo">
+                <div class="staff-overlay-v2">
+                    <div class="staff-info-v2">
+                        <h3 class="staff-name-v2"> عادل مصطفى
+                        </h3>
+                        <p class="staff-role-v2">مدرب مساعد
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card-v2">
+                <img src="https://board.alahlyegypt.com/storage/technical_staff/rcSTaKbYZpeJRMzpd2z47xTTiF6G7rBCoDSWAQqG.png"
+                    alt=" " class="staff-photo">
+                <div class="staff-overlay-v2">
+                    <div class="staff-info-v2">
+                        <h3 class="staff-name-v2"> جون مولبي
+                        </h3>
+                        <p class="staff-role-v2"> مدرب مساعد
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card-v2">
+                <img src="https://board.alahlyegypt.com/storage/technical_staff/IgPRxyiAtFVedX5wLtqK64BD7PKdScULnNoSaKKI.png"
+                    alt=" " class="staff-photo">
+                <div class="staff-overlay-v2">
+                    <div class="staff-info-v2">
+                        <h3 class="staff-name-v2"> كاي ستيفانسن
+                        </h3>
+                        <p class="staff-role-v2">مدرب حراس المرمى
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card-v2">
+                <img src="https://board.alahlyegypt.com/storage/technical_staff/oJorDKYt1Rb33Xifc3N8VV65TLEmRdQxLfpvPMuY.png"
+                    alt=" " class="staff-photo">
+                <div class="staff-overlay-v2">
+                    <div class="staff-info-v2">
+                        <h3 class="staff-name-v2"> جاكوب ويليام
+                        </h3>
+                        <p class="staff-role-v2"> مخطط أحمال
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card-v2">
+                <img src="https://board.alahlyegypt.com/storage/technical_staff/KzK3DAFiS7x3sZ87RZpmKA8z1pBI84xdGHGw5lzY.png"
+                    alt=" " class="staff-photo">
+                <div class="staff-overlay-v2">
+                    <div class="staff-info-v2">
+                        <h3 class="staff-name-v2"> نيكلاس أوبريك
+                        </h3>
+                        <p class="staff-role-v2"> محلل أداء
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="staff-card-v2">
+                <img src="https://board.alahlyegypt.com/storage/technical_staff/jFgPBujEMIfYBo2QMAdW0RWSXLfs6lLJPX66W98n.png"
+                    alt="mohammed yossef " class="staff-photo">
+                <div class="staff-overlay-v2">
+                    <div class="staff-info-v2">
+                        <h3 class="staff-name-v2"> محمد يوسف
+                        </h3>
+                        <p class="staff-role-v2">المدير الرياضي
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </section>
+
+
+
+
+
+    <script>
+        // ميكانيزم المنيو
+        const menuBtn = document.getElementById('menuBtn');
+        const sideMenu = document.getElementById('sideMenu');
+        const overlay = document.getElementById('overlay');
+        const closeBtn = document.getElementById('closeBtn');
+
+        function toggleMenu() {
+            sideMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        closeBtn.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+
+        // ميكانيزم السلايدر
+        const slider = document.getElementById('slider');
+        const cards = document.querySelectorAll('.player-card');
+
+        function btnMove(direction) {
+            // الخطوة بقت 220 عرض الكارت + 20 المارجن
+            const step = 240;
+            slider.scrollBy({ left: direction * step, behavior: 'smooth' });
+        }
+
+        slider.addEventListener('scroll', () => {
+            let closest = null;
+            let minDistance = Infinity;
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const dist = Math.abs((rect.left + rect.width / 2) - (window.innerWidth / 2));
+                if (dist < minDistance) { minDistance = dist; closest = card; }
+            });
+            cards.forEach(c => c.classList.remove('active'));
+            if (closest) closest.classList.add('active');
+        });
+    </script>
+</body>
+
+</html>

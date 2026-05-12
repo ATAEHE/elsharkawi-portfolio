@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جماهير الأهلي | العائلة الأكبر</title>
+    <link rel="stylesheet" href="home.css">
+    <style>
+        .fans-hero {
+            background-image: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1574629810360-7efbc5ae0083?q=80&w=1600&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+        }
+        .fans-hero-content {
+            color: #fff;
+            max-width: 600px;
+        }
+        .fans-hero h1 { font-size: 60px; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; }
+        .membership-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: -80px;
+            position: relative;
+            z-index: 10;
+        }
+        .mem-card {
+            background: var(--bg-white);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            border-top: 6px solid var(--primary-red);
+            transition: var(--transition-smooth);
+        }
+        .mem-card:hover { transform: translateY(-10px); }
+        .mem-card h3 { font-size: 28px; margin-bottom: 15px; }
+        .mem-card .price { font-size: 40px; font-weight: 900; color: var(--primary-red); margin-bottom: 20px; }
+        .mem-features { text-align: right; margin-bottom: 30px; }
+        .mem-features li { padding: 10px 0; border-bottom: 1px solid var(--border-light); font-weight: 700; color: var(--text-secondary); }
+    </style>
+</head>
+<body>
+    <div class="top-nav">
+        <div class="container">
+            <a href="sponsors.html">الرعاة</a>
+            <a href="fans.html" class="active">جماهير الأهلي</a>
+            <a href="login.html">تسجيل الدخول / إنشاء حساب 👤</a>
+        </div>
+    </div>
+    <header class="main-nav">
+        <div class="container">
+            <div class="brand-logo">
+                <a href="index.html"><img src="elahly_logo.jpg" alt="Al Ahly SC Logo"></a>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="news.html">الأخبار</a>
+                <a href="champions.html">البطولات</a>
+                <a href="matches.html">المباريات</a>
+                <a href="team.html">الفريق الأول</a>
+                <a href="club.html">النادي</a>
+            </nav>
+            <div class="nav-tools">
+                <a href="#" class="btn btn-primary">متجر الأهلي</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="fans-hero">
+        <div class="container">
+            <div class="fans-hero-content">
+                <h1>أعظم جمهور في الكون</h1>
+                <p style="font-size: 20px; line-height: 1.6;">أنتم لستم مجرد مشجعين، أنتم نبض النادي وسر انتصاراته. انضموا إلى برامج العضوية واستمتعوا بتجربة تليق بأبطال القارة.</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="container">
+            <div class="membership-cards">
+                <div class="mem-card">
+                    <h3>أهلاوي برونزي</h3>
+                    <div class="price">١٥٠ ج.م<span>/سنوياً</span></div>
+                    <ul class="mem-features">
+                        <li>أولوية شراء التذاكر (المستوى الثالث)</li>
+                        <li>خصم 10% على المتجر الرسمي</li>
+                        <li>حضور تدريب واحد للفريق سنوياً</li>
+                        <li>بطاقة عضوية رقمية</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline-dark" style="width: 100%;">اشترك الآن</a>
+                </div>
+                <div class="mem-card" style="border-top-color: #c0c0c0; background: linear-gradient(135deg, #ffffff, #f0f0f0); transform: scale(1.05); z-index: 2; box-shadow: 0 30px 60px rgba(0,0,0,0.15);">
+                    <h3>أهلاوي فضي</h3>
+                    <div class="price">٤٠٠ ج.م<span>/سنوياً</span></div>
+                    <ul class="mem-features">
+                        <li>أولوية شراء التذاكر (المستوى الثاني)</li>
+                        <li>خصم 20% على المتجر الرسمي</li>
+                        <li>حضور 3 تدريبات للفريق سنوياً</li>
+                        <li>بطاقة عضوية فعلية تصلك للمنزل</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary" style="width: 100%;">اشترك الآن</a>
+                </div>
+                <div class="mem-card" style="border-top-color: #ffd700;">
+                    <h3>أهلاوي ذهبي</h3>
+                    <div class="price">١٠٠٠ ج.م<span>/سنوياً</span></div>
+                    <ul class="mem-features">
+                        <li>أولوية قصوى وجلوس في المقصورة</li>
+                        <li>خصم 30% وشحن مجاني للمتجر</li>
+                        <li>لقاء سنوي مع اللاعبين والمدرب</li>
+                        <li>صندوق هدايا ترحيبي حصري</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline-dark" style="width: 100%;">اشترك الآن</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark">
+        <div class="container text-center" style="text-align: center;">
+            <h2 class="section-title" style="display:inline-block; border:none; padding:0; margin-bottom: 20px;">أغاني وأهازيج المدرج</h2>
+            <p style="margin-bottom: 40px; color: var(--text-muted); max-width: 600px; margin-left: auto; margin-right: auto;">احفظ أهازيج المدرج لتشاركنا التشجيع في استاد القاهرة في المباراة القادمة.</p>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                <div style="background: rgba(255,255,255,0.05); padding: 30px; border-radius: 8px;">
+                    <a href="https://www.youtube.com/watch?v=sX0yy3rVjnc&list=RDsX0yy3rVjnc&start_radio=1&pp=ygUV2YTYqtin2YTYqtipINi02YXYp9mEoAcB">
+                    <h3 style="margin-bottom: 15px; color: var(--primary-red);">التالتة شمال</h3>
+                    <p style="color: #aaa; line-height: 1.8;">التالتة شمال، بنهز جبال، وبأعلى صوت دايماً بنشجع الأبطال...</p>
+                    <button class="btn btn-outline-light" style="margin-top:20px; padding: 8px 20px;">استمع 🎵</button>
+                </a>
+
+                </div>
+                <div style="background: rgba(255,255,255,0.05); padding: 30px; border-radius: 8px;">
+                    <a href="https://www.youtube.com/watch?v=xLhZdRTGvPE&list=RDxLhZdRTGvPE&start_radio=1&pp=ygVj2KPYudi42YUg2YbYp9iv2Yog2YHZiiDYp9mE2YPZiNmG2Iwg2YTZiCDZg9mEINin2YTYr9mG2YrYpyDYttiv2YfYjCDZh9mB2LbZhCDYo9it2KjZhyDYqNis2YbZiNmGLi4uoAcB">
+                    <h3 style="margin-bottom: 15px; color: var(--primary-red);">أعظم نادي في الكون</h3>
+                    <p style="color: #aaa; line-height: 1.8;">أعظم نادي في الكون، لو كل الدنيا ضده، هفضل أحبه بجنون...</p>
+                    <button class="btn btn-outline-light" style="margin-top:20px; padding: 8px 20px;">استمع 🎵</button>
+                </a>
+
+                </div>
+                <div style="background: rgba(255,255,255,0.05); padding: 30px; border-radius: 8px;">
+                    <a href="https://www.youtube.com/watch?v=friJKVt7YPU&list=RDfriJKVt7YPU&start_radio=1&pp=ygUOZWx0YWx0YSBzaGVtYWygBwE%3D">
+                    <h3 style="margin-bottom: 15px; color: var(--primary-red);">جمهوره ده حماه</h3>
+                    <p style="color: #aaa; line-height: 1.8;">جمهوره ده حماه، على الحلوة والمرة معاه، عمري ما أحب غير الأهلي...</p>
+                    <button class="btn btn-outline-light" style="margin-top:20px; padding: 8px 20px;">استمع 🎵</button>
+                </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MEGA FOOTER -->
+    <footer class="mega-footer">
+        <!-- Add Standard Footer logic -->
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="elahly_logo.jpg" alt="Al Ahly SC">
+                    <p>النادي الأهلي المصري هو النادي الأنجح في تاريخ قارة أفريقيا والوطن العربي، وتأسس عام 1907.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 النادي الأهلي الرياضي. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

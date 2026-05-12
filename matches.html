@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المباريات والنتائج | النادي الأهلي</title>
+    <link rel="stylesheet" href="home.css">
+    <style>
+        .matches-container { display: grid; gap: 20px; padding: 60px 0; }
+        .match-row {
+            display: flex; justify-content: space-between; align-items: center;
+            background: var(--bg-white); border: 1px solid var(--border-light);
+            padding: 25px 40px; border-radius: 8px; transition: var(--transition-smooth);
+        }
+        .match-row:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-color: var(--primary-red); }
+        .match-date-col { width: 150px; text-align: center; border-left: 1px solid var(--border-light); }
+        .match-date-col .day { font-size: 30px; font-weight: 900; color: var(--primary-red); }
+        .match-date-col .month { font-weight: 700; text-transform: uppercase; color: var(--text-secondary); }
+        .match-teams-col { flex-grow: 1; display: flex; align-items: center; justify-content: center; gap: 30px; font-size: 24px; font-weight: 800; }
+        .match-teams-col img { height: 60px; object-fit: contain; }
+        .match-vs { font-size: 20px; color: var(--text-muted); background: var(--bg-offwhite); padding: 5px 15px; border-radius: 20px; }
+        .match-action-col { width: 150px; text-align: left; }
+        .comp-badge { font-size: 12px; font-weight: 700; padding: 5px 10px; background: var(--bg-darker); color: #fff; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <header class="main-nav">
+        <div class="container">
+            <div class="brand-logo"><a href="index.html"><img src="elahly_logo.jpg" alt="Logo"></a></div>
+            <nav class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="news.html">الأخبار</a>
+                <a href="matches.html" class="active">المباريات</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="premium-page-header">
+        <div class="container">
+            <h1>المباريات والنتائج</h1>
+            <p>تابع مواعيد مباريات بطل إفريقيا القادمة ونتائج المباريات السابقة في كافة البطولات.</p>
+        </div>
+    </div>
+
+    <section class="section" style="background: var(--bg-offwhite);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">المباريات القادمة</h2>
+            </div>
+            
+            <div class="matches-container">
+                <div class="match-row">
+                    <div class="match-date-col">
+                        <div class="day">25</div><div class="month">مايو 2026</div><div style="font-size: 14px; margin-top:5px;">20:00</div>
+                    </div>
+                    <div class="match-teams-col">
+                        <span style="text-align: left; width: 150px;">الأهلي</span>
+                        <img src="elahly_logo.jpg" alt="Ahly">
+                        <span class="match-vs">VS</span>
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/Zamalek_SC_logo.svg/1200px-Zamalek_SC_logo.svg.png" alt="Zamalek">
+                        <span style="text-align: right; width: 150px;">الزمالك</span>
+                    </div>
+                    <div class="match-action-col">
+                        <div class="comp-badge">الدوري المصري</div>
+                        <a href="#" class="btn btn-primary" style="padding: 10px 20px; font-size:14px; display:block;">شراء التذاكر</a>
+                    </div>
+                </div>
+
+                <div class="match-row">
+                    <div class="match-date-col">
+                        <div class="day">02</div><div class="month">يونيو 2026</div><div style="font-size: 14px; margin-top:5px;">21:00</div>
+                    </div>
+                    <div class="match-teams-col">
+                        <span style="text-align: left; width: 150px;">صن داونز</span>
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/07/Mamelodi_Sundowns_logo.svg/1200px-Mamelodi_Sundowns_logo.svg.png" alt="Sundowns">
+                        <span class="match-vs">VS</span>
+                        <img src="elahly_logo.jpg" alt="Ahly">
+                        <span style="text-align: right; width: 150px;">الأهلي</span>
+                    </div>
+                    <div class="match-action-col">
+                        <div class="comp-badge" style="background: #c5a973; color:#000;">دوري أبطال أفريقيا</div>
+                        <div style="font-size: 14px; font-weight:700; color:var(--text-muted);">مباراة الذهاب</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="mega-footer">
+        <div class="container"><div class="footer-bottom"><p>&copy; 2026 النادي الأهلي الرياضي.</p></div></div>
+    </footer>
+</body>
+</html>

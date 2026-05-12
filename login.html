@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN | AL AHLY SC</title>
+    <link rel="stylesheet" href="login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="login-page-bg">
+
+    <header class="rm-style-header">
+        <div class="main-nav">
+            <div class="container-nav">
+                <div class="menu-icon" onclick="toggleMenu()">
+                    <span></span><span></span><span></span>
+                </div>
+                <div class="logo-sec">
+                    <a href="index.html"><img src="" class="royal-logo"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="login-wrapper">
+        <div class="login-card">
+            <div class="login-brand">
+                <img src="elahly_logo.jpg" alt="Al Ahly Logo">
+                <h2>SIGN IN</h2>
+            </div>
+            
+            <form class="login-form">
+                <div class="input-field">
+                    <input type="email" id="email" required>
+                    <label for="email">USER EMAIL</label>
+                </div>
+                
+                <div class="input-field">
+                    <input type="password" id="password" required>
+                    <label for="password">PASSWORD</label>
+                </div>
+
+                <div class="login-helpers">
+                    <a href="forgot_password.html">?FORGOT PASSWORD</a>
+                </div>
+
+                <button type="submit" class="login-btn-main">LOGIN</button>
+            </form>
+
+            <div class="login-footer">
+                <p>DON'T HAVE AN ACCOUNT? <a href="register.html">REGISTER NOW</a></p>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

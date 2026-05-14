@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Abdalla</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Outfit:wght@300;600;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Outfit:wght@300;600;900&display=swap"
+        rel="stylesheet">
 
     <style>
         :root {
@@ -67,7 +68,9 @@
             transition: 0.3s;
         }
 
-        nav a:hover { color: var(--secondary); }
+        nav a:hover {
+            color: var(--secondary);
+        }
 
         /* Hero Section - الجزء الأصلي بتاعك */
         .hero {
@@ -120,8 +123,15 @@
         }
 
         /* قسم الأعمال */
-        .section { padding: 80px 10%; }
-        .section-title { font-size: 2.5rem; margin-bottom: 50px; text-align: center; }
+        .section {
+            padding: 80px 10%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-align: center;
+        }
 
         .grid {
             display: grid;
@@ -129,7 +139,10 @@
             gap: 30px;
         }
 
-        .grid a { text-decoration: none; color: inherit; }
+        .grid a {
+            text-decoration: none;
+            color: inherit;
+        }
 
         .card {
             background: var(--card-bg);
@@ -176,97 +189,210 @@
 
         /* إعدادات الموبايل (Responsive) */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
             .grid {
-                display: flex; /* جعل الكروت جنب بعض */
-                overflow-x: auto; /* سحب بالعرض */
+                display: flex;
+                /* جعل الكروت جنب بعض */
+                overflow-x: auto;
+                /* سحب بالعرض */
                 scroll-snap-type: x mandatory;
                 padding: 20px 0;
                 gap: 15px;
                 -webkit-overflow-scrolling: touch;
             }
 
-            .grid::-webkit-scrollbar { display: none; } /* إخفاء سكرول بار */
+            .grid::-webkit-scrollbar {
+                display: none;
+            }
+
+            /* إخفاء سكرول بار */
 
             .grid a {
-                flex: 0 0 85%; /* الكارت ياخد أغلب عرض الشاشة */
+                flex: 0 0 85%;
+                /* الكارت ياخد أغلب عرض الشاشة */
                 scroll-snap-align: center;
             }
 
-            .section { padding: 50px 5%; }
-            
+            .section {
+                padding: 50px 5%;
+            }
+
             #contact a.btn-modern {
                 font-size: 0.8rem;
                 padding: 10px 20px;
             }
         }
 
-        footer { padding: 40px; text-align: center; color: #031226; border-top: 1px solid #eee; }
+        footer {
+            padding: 40px;
+            text-align: center;
+            color: #031226;
+            border-top: 1px solid #eee;
+        }
+
+        /* الحاوية اللي بتجمع اللوجو والمنيو */
+        .header-nav-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            /* اللوجو يمين والمنيو في النص */
+            align-items: center;
+            z-index: 10000;
+        }
+
+        /* اللوجو الدائري */
+        .logo-circle {
+            width: 60px;
+            height: 60px;
+            background: rgb(255, 255, 255);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid #ffffff;
+            flex-shrink: 0;
+            /* عشان ميتضغطش في الموبايل */
+        }
+
+        .logo-circle img {
+            width: 85%;
+            height: auto;
+            border-radius: 50%;
+        }
+
+        /* المنيو البيضاوية (الكبسولة) */
+        .main-nav {
+            background: rgba(45, 45, 45, 0.8);
+            /* خليتها أغمق شوية عشان تبان */
+            backdrop-filter: blur(10px);
+            padding: 10px 100px;
+            border-radius: 50px;
+            display: flex;
+            gap: 100px;
+            list-style: none;
+            margin: 0 auto;
+            /* عشان تفضل في النص */
+            transform: translateX(-30px);
+            /* تعويض لمكان اللوجو عشان تفضل في سنتر الصفحة بالظبط */
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* --- تعديلات الموبايل (مهمة جداً) --- */
+        @media (max-width: 768px) {
+            .header-nav-container {
+                width: 94%;
+                top: 10px;
+            }
+
+            .logo-circle {
+                width: 45px;
+                height: 45px;
+            }
+
+            .main-nav {
+                padding: 8px 20px;
+                gap: 15px;
+                transform: translateX(0);
+                /* نلغي الإزاحة في الموبايل عشان المساحة */
+            }
+
+            .main-nav a {
+                font-size: 0.8rem;
+            }
+        }
     </style>
 </head>
 
 <body>
+    <div>
+        <div class="header-nav-container">
+            <a href="index.html" class="logo-circle">
+                <img src="Gemini_Generated_Image_2amlv82amlv82aml.png" alt="AE Logo">
+            </a>
 
-    <nav>
-        <a href="#home">الرئيسية</a>
-        <a href="#work">أعمالي</a>
-        <a href="#contact">تواصل</a>
-    </nav>
-    <br>
-    <br>
-    <br>
-    <section class="hero" id="home">
-        <h1>أصنع مستقبلاً<br>رقمياً <span>مبهراً.</span></h1>
-        <p>أنا مبرمج ومصمم أجمع بين الكود النظيف والتصميم اللي يخطف العين.</p>
-        <a href="#work" class="btn-modern">استكشف أعمالي</a>
+            <ul class="main-nav">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#work">أعمالي</a></li>
+                <li><a href="#contact">تواصل</a></li>
+            </ul>
+
+            <div style="width: 60px;" class="desktop-only"></div>
+        </div>
         <br>
-        <h1>Abdalla<br>Elsharkawi</h1>
-    </section>
+        <br>
+        <br>
+        <section class="hero" id="home">
+            <h1>أصنع مستقبلاً<br>رقمياً <span>مبهراً.</span></h1>
+            <p>أنا مبرمج ومصمم أجمع بين الكود النظيف والتصميم اللي يخطف العين.</p>
+            <a href="#work" class="btn-modern">استكشف أعمالي</a>
+            <br>
+            <h1>Abdalla<br>Elsharkawi</h1>
+        </section>
 
-    <section class="section" id="work">
-        <h2 class="section-title">مشاريع مختارة</h2>
-        <div class="grid">
-            <a href="c++.html">
-                <div class="card">
-                    <i class="fa-solid fa-terminal" style="font-size: 2.5rem; color: var(--secondary); margin-bottom: 15px;"></i>
-                    <h3>++C</h3>
-                </div>
-            </a>
-            <a href="blender.html">
-                <div class="card">
-                    <i class="fa-solid fa-cube" style="font-size: 2.5rem; color: var(--secondary); margin-bottom: 15px;"></i>
-                    <h3>BLENDER</h3>
-                </div>
-            </a>
-            <a href="web.html">
-                <div class="card">
-                    <i class="fa-solid fa-code" style="font-size: 2.5rem; color: var(--secondary); margin-bottom: 15px;"></i>
-                    <h3>WEBSITE BUILDER</h3>
-                </div>
-            </a>
-        </div>
-    </section>
+        <section class="section" id="work">
+            <h2 class="section-title">مشاريع مختارة</h2>
+            <div class="grid">
+                <a href="c++.html">
+                    <div class="card">
+                        <i class="fa-solid fa-terminal"
+                            style="font-size: 2.5rem; color: var(--secondary); margin-bottom: 15px;"></i>
+                        <h3>++C</h3>
+                    </div>
+                </a>
+                <a href="blender.html">
+                    <div class="card">
+                        <i class="fa-solid fa-cube"
+                            style="font-size: 2.5rem; color: var(--secondary); margin-bottom: 15px;"></i>
+                        <h3>BLENDER</h3>
+                    </div>
+                </a>
+                <a href="web.html">
+                    <div class="card">
+                        <i class="fa-solid fa-code"
+                            style="font-size: 2.5rem; color: var(--secondary); margin-bottom: 15px;"></i>
+                        <h3>WEBSITE BUILDER</h3>
+                    </div>
+                </a>
+            </div>
+        </section>
 
-    <section id="contact" style="text-align: center; padding: 100px 20px;">
-        <h2 style="font-size: 2.5rem; margin-bottom: 20px;">يلا نبدأ</h2>
-        <p style="margin-bottom: 30px; color: #272f39;">أنا دايماً متاح للمشاريع اللي فيها تحدي.</p>
-        
-        <div class="social-container">
-            <a href="https://www.facebook.com/profile.php?id=61568315912358" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/abdalla_t16/?__pwa=1" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/feed/?st=true" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
-        </div>
-        
-        <br><br>
-        <a href="mailto:elsharkawiabdalla16@gmail.com" class="btn-modern">
-            elsharkawiabdalla16@gmail.com
-        </a>
-    </section>
+        <section id="contact" style="text-align: center; padding: 100px 20px;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">يلا نبدأ</h2>
+            <p style="margin-bottom: 30px; color: #272f39;">أنا دايماً متاح للمشاريع اللي فيها تحدي.</p>
 
-    <footer>
-        <p>© Created by Abdalla Elsharkawi</p>
-    </footer>
+            <div class="social-container">
+                <a href="https://www.facebook.com/profile.php?id=61568315912358" class="social-icon"><i
+                        class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/abdalla_t16/?__pwa=1" class="social-icon"><i
+                        class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/feed/?st=true" class="social-icon"><i
+                        class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+
+            <br><br>
+            <a href="mailto:elsharkawiabdalla16@gmail.com" class="btn-modern">
+                elsharkawiabdalla16@gmail.com
+            </a>
+        </section>
+
+        <footer>
+            <p>© Created by Abdalla Elsharkawi</p>
+        </footer>
 
 </body>
 

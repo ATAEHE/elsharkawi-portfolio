@@ -3,14 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1200, initial-scale=0.1">
     <title>النادي الأهلي </title>
     <link rel="stylesheet" href="home.css">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Tajawal:wght@400;700;900&display=swap"
         rel="stylesheet">
 </head>
 <style>
-    @media screen and (max-width: 768px) 
+    @media screen and (max-width: 1px) 
     {
 
         .top-nav .container {
@@ -211,7 +211,7 @@
     }
 
     /* ميديا كويري للموبايل عشان الـ right-group تظهر تاني لو محتاجها */
-    @media (max-width: 768px) {
+    @media (max-width: 1px) {
         .nav-menu {
             display: none !important;
         }
@@ -276,14 +276,11 @@
         direction: rtl !important;
     }
 
-    /* كتلة اليمين: اللوجو والمنيو */
     .nav-right-group {
         display: flex !important;
         align-items: center !important;
-        gap: 50px !important;
-        /* المسافة بين اللوجو والروابط */
+        gap: 20px !important;
         margin-right: 0 !important;
-        /* ضمان الالتصاق بأقصى اليمين */
     }
 
     .royal-logo {
@@ -410,7 +407,7 @@
         margin-top: 5px;
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 1px) {
         .titles-grid {
             grid-template-columns: repeat(2, 1fr);
         }
@@ -426,60 +423,41 @@
     <div id="sideDrawer" class="side-menu">
         <a href="javascript:void(0)" class="close-btn" onclick="toggleMenu()">&times;</a>
         <nav class="side-links">
-            <a href="index.html">الرئيسية</a>
-            <a href="champions.html">تاريخ البطولات</a>
-            <a href="club.html">نادي القرن</a>
+            <a href="news.html">الأخبار</a>
+            <a href="champions.html">البطولات</a>
+            <a href="matches.html">المباريات</a>
             <a href="team1.html">الفريق الأول</a>
         </nav>
     </div>
 
-    <header class="rm-style-header">
-        <div class="top-nav">
-            <div class="container">
-                <div class="top-links">
-                    <a href="fans.html">المشجعين</a>
+    <header class="global-dark-header">
+        <div class="header-container">
+            <div class="header-right">
+                <div class="menu-icon" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
-                <div class="top-auth">
-                    <a href="login.html" style="color: rgb(255, 255, 255); text-decoration:none;">تسجيل الدخول </a>
+            </div>
+            
+            <div class="header-center">
+                <div class="search-wrapper">
+                    <input type="text" id="searchInput" placeholder="ابحث عن بطولة...">
+                    <button class="search-btn">
+                        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </button>
                 </div>
-                <div class="top-auth">
-                </div>
+            </div>
+
+            <div class="header-left">
+                <a href="login.html" class="user-icon-btn">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </a>
+                <a href="index.html">
+                    <img src="elahly_logo.jpg" class="royal-logo" alt="Al Ahly Logo">
+                </a>
             </div>
         </div>
-
-        <div class="main-nav">
-            <div class="container-nav">
-                <div class="right-group">
-                    <div class="menu-icon" onclick="toggleMenu()">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                    <a href="index.html">
-                    </a>
-                </div>
-                <div class="container">
-                    <div class="nav-right-group">
-                        <a href="index.html">
-                            <img src="elahly_logo.jpg" class="royal-logo" alt="Al Ahly Logo">
-                        </a>
-                        <nav class="nav-menu">
-                            <a href="news.html">الأخبار</a>
-                            <a href="champions.html">البطولات</a>
-                            <a href="matches.html">المباريات</a>
-                            <a href="team1.html">الفريق الأول</a>
-                            <a href="club.html">النادي</a>
-                        </nav>
-                    </div>
-
-                    <div class="nav-left-group">
-                        <div class="search-wrapper">
-                            <input type="text" id="searchInput" placeholder="ابحث هنا...">
-                            <button class="search-btn">⌕</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
     </header>
 
     <section class="royal-hero">

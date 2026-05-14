@@ -110,6 +110,32 @@
             word-break: break-all;
             text-transform: uppercase;
         }
+        .social-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-icon {
+            width: 55px;
+            height: 55px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
+
+        .social-icon:hover {
+            background: var(--primary);
+            color: #38bdf8;
+            transform: scale(1.1);
+        }
 
         .logic-hint { font-size: 0.75rem; color: #94a3b8; line-height: 1.5; text-align: center; }
 
@@ -193,6 +219,79 @@
         font-size: 0.8rem;
     }
 
+    /* الحاوية اللي بتجمع اللوجو والمنيو */
+.header-nav-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between; /* اللوجو يمين والمنيو في النص */
+    align-items: center;
+    z-index: 10000;
+}
+
+/* اللوجو الدائري */
+.logo-circle {
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border: 2px solid #fff;
+    flex-shrink: 0; /* عشان ميتضغطش في الموبايل */
+}
+
+.logo-circle img {
+    width: 85%;
+    height: auto;
+    border-radius: 50%;
+}
+
+/* المنيو البيضاوية (الكبسولة) */
+.main-nav {
+    background: rgba(45, 45, 45, 0.8); /* خليتها أغمق شوية عشان تبان */
+    backdrop-filter: blur(10px);
+    padding: 10px 30px;
+    border-radius: 50px;
+    display: flex;
+    gap: 25px;
+    list-style: none;
+    margin: 0 auto; /* عشان تفضل في النص */
+    transform: translateX(-30px); /* تعويض لمكان اللوجو عشان تفضل في سنتر الصفحة بالظبط */
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/* --- تعديلات الموبايل (مهمة جداً) --- */
+@media (max-width: 768px) {
+    .header-nav-container {
+        width: 95%;
+        top: 10px;
+    }
+    .logo-circle {
+        width: 45px;
+        height: 45px;
+    }
+    .main-nav {
+        padding: 8px 15px;
+        gap: 15px;
+        transform: translateX(0); /* نلغي الإزاحة في الموبايل عشان المساحة */
+    }
+    .main-nav a {
+        font-size: 0.8rem;
+    }
+}
     
 }
     </style>
@@ -282,6 +381,13 @@
                 </p>
             </div>
 
+        </div>
+        <div class="social-container">
+            <a href="https://www.facebook.com/profile.php?id=61568315912358" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/abdalla_t16/?__pwa=1" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/feed/?st=true" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+            
+            
         </div>
     </div>
 

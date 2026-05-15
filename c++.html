@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>C++ Project | Official Codice Fiscale Logic</title>
-    <link rel="icon" type="image/png" href="Gemini_Generated_Image_kwv1xokwv1xokwv1.png">
-    <meta property="og:image" content="Gemini_Generated_Image_kwv1xokwv1xokwv1.png">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Fira+Code:wght@400;500&family=Outfit:wght@300;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Fira+Code:wght@400;500&family=Outfit:wght@300;600&display=swap"
+        rel="stylesheet">
 
     <style>
         :root {
@@ -19,7 +20,12 @@
             --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #dbeafe 100%);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
 
         body {
             background: var(--bg-gradient);
@@ -31,58 +37,140 @@
         /* Navigation Bar */
         nav {
             position: fixed;
-            top: 0; left: 0; width: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
             background: var(--glass-bg);
             backdrop-filter: blur(15px);
             padding: 15px 0;
-            display: flex; justify-content: center; gap: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
             z-index: 10000;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
-        nav a { text-decoration: none; color: #64748b; font-weight: 700; font-size: 0.9rem; transition: 0.3s; }
-        nav a:hover { color: var(--accent-blue); }
+        nav a {
+            text-decoration: none;
+            color: #64748b;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-blue);
+        }
 
         /* Header Area */
-        .header { padding: 120px 20px 30px; text-align: center; }
-        .header h1 { font-family: 'Outfit', sans-serif; font-size: clamp(1.8rem, 5vw, 2.5rem); color: #0f172a; }
-        
-        .italy-line { display: flex; width: 60px; height: 5px; margin: 10px auto; border-radius: 10px; overflow: hidden; }
-        .it-g { background: var(--italy-green); flex: 1; }
-        .it-w { background: #fff; flex: 1; }
-        .it-r { background: var(--italy-red); flex: 1; }
+        .header {
+            padding: 120px 20px 30px;
+            text-align: center;
+        }
 
-        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        .header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: #0f172a;
+        }
+
+        .italy-line {
+            display: flex;
+            width: 60px;
+            height: 5px;
+            margin: 10px auto;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .it-g {
+            background: var(--italy-green);
+            flex: 1;
+        }
+
+        .it-w {
+            background: #fff;
+            flex: 1;
+        }
+
+        .it-r {
+            background: var(--italy-red);
+            flex: 1;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
         /* Main Card Layout */
         .project-card {
             background: white;
             border-radius: 24px;
             padding: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
             border: 1px solid #edf2f7;
         }
 
-        .form-section h2 { margin-bottom: 20px; font-size: 1.3rem; color: var(--accent-blue); }
-        
-        .input-box { margin-bottom: 15px; text-align: right; }
-        .input-box label { display: block; font-size: 0.8rem; font-weight: bold; margin-bottom: 5px; color: #475569; }
-        .input-box input, .input-box select {
-            width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 10px; 
-            font-size: 16px; background: #f8fafc; outline: none; transition: 0.3s;
+        .form-section h2 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            color: var(--accent-blue);
         }
-        .input-box input:focus { border-color: var(--accent-blue); background: #fff; }
+
+        .input-box {
+            margin-bottom: 15px;
+            text-align: right;
+        }
+
+        .input-box label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #475569;
+        }
+
+        .input-box input,
+        .input-box select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 16px;
+            background: #f8fafc;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-box input:focus {
+            border-color: var(--accent-blue);
+            background: #fff;
+        }
 
         .btn-calc {
-            width: 100%; padding: 16px; border: none; border-radius: 12px;
-            background: var(--accent-blue); color: white; font-weight: bold;
-            font-size: 1rem; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 12px rgba(0,102,204,0.2);
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            background: var(--accent-blue);
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
         }
-        .btn-calc:hover { background: #0052a3; transform: translateY(-2px); }
+
+        .btn-calc:hover {
+            background: #0052a3;
+            transform: translateY(-2px);
+        }
 
         /* Output Window */
         .result-section {
@@ -111,6 +199,7 @@
             word-break: break-all;
             text-transform: uppercase;
         }
+
         .social-container {
             display: flex;
             justify-content: center;
@@ -138,185 +227,340 @@
             transform: scale(1.1);
         }
 
-        .logic-hint { font-size: 0.75rem; color: #94a3b8; line-height: 1.5; text-align: center; }
+        .logic-hint {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            line-height: 1.5;
+            text-align: center;
+        }
 
         /* Mobile Adjustments */
         @media (max-width: 850px) {
-            .project-card { grid-template-columns: 1fr; }
-            .result-section { order: 2; margin-top: 20px; }
-            .header { padding-top: 80px; }
+            .project-card {
+                grid-template-columns: 1fr;
+            }
+
+            .result-section {
+                order: 2;
+                margin-top: 20px;
+            }
+
+            .header {
+                padding-top: 80px;
+            }
         }
 
         /* الحاوية اللي بتجمع اللوجو والمنيو */
-.header-nav-container {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 1200px;
-    display: flex;
-    justify-content: space-between; /* اللوجو يمين والمنيو في النص */
-    align-items: center;
-    z-index: 10000;
-}
+        .header-nav-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            /* اللوجو يمين والمنيو في النص */
+            align-items: center;
+            z-index: 10000;
+        }
 
-/* اللوجو الدائري */
-.logo-circle {
-    width: 60px;
-    height: 60px;
-    background: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    border: 2px solid #fff;
-    flex-shrink: 0; /* عشان ميتضغطش في الموبايل */
-}
+        /* اللوجو الدائري */
+        .logo-circle {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid #fff;
+            flex-shrink: 0;
+            /* عشان ميتضغطش في الموبايل */
+        }
 
-.logo-circle img {
-    width: 85%;
-    height: auto;
-    border-radius: 50%;
-}
+        .logo-circle img {
+            width: 85%;
+            height: auto;
+            border-radius: 50%;
+        }
 
-/* المنيو البيضاوية (الكبسولة) */
-.main-nav {
-    background: rgba(63, 117, 182, 0.8); /* خليتها أغمق شوية عشان تبان */
-    backdrop-filter: blur(10px);
-    padding: 10px 100px;
-    border-radius: 50px;
-    display: flex;
-    gap: 100px;
-    list-style: none;
-    margin: 0 auto; /* عشان تفضل في النص */
-    transform: translateX(-30px); /* تعويض لمكان اللوجو عشان تفضل في سنتر الصفحة بالظبط */
-}
+        /* المنيو البيضاوية (الكبسولة) */
+        .main-nav {
+            background: rgba(63, 117, 182, 0.8);
+            /* خليتها أغمق شوية عشان تبان */
+            backdrop-filter: blur(10px);
+            padding: 10px 100px;
+            border-radius: 50px;
+            display: flex;
+            gap: 100px;
+            list-style: none;
+            margin: 0 auto;
+            /* عشان تفضل في النص */
+            transform: translateX(-30px);
+            /* تعويض لمكان اللوجو عشان تفضل في سنتر الصفحة بالظبط */
+        }
 
-.main-nav a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    font-size: 0.9rem;
-}
+        .main-nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
 
-/* --- تعديلات الموبايل (مهمة جداً) --- */
-@media (max-width: 768px) {
-    .header-nav-container {
-        width: 95%;
-        top: 10px;
-    }
-    .logo-circle {
-        width: 45px;
-        height: 45px;
-    }
-    .main-nav {
-        padding: 8px 25px;
-        gap: 20px;
-        transform: translateX(0); /* نلغي الإزاحة في الموبايل عشان المساحة */
-    }
-    .main-nav a {
-        font-size: 0.8rem;
-    }
+        /* --- تعديلات الموبايل (مهمة جداً) --- */
+        @media (max-width: 768px) {
+            .header-nav-container {
+                width: 95%;
+                top: 10px;
+            }
 
-    /* الحاوية اللي بتجمع اللوجو والمنيو */
-.header-nav-container {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 1200px;
-    display: flex;
-    justify-content: space-between; /* اللوجو يمين والمنيو في النص */
-    align-items: center;
-    z-index: 10000;
-}
+            .logo-circle {
+                width: 45px;
+                height: 45px;
+            }
 
-/* اللوجو الدائري */
-.logo-circle {
-    width: 60px;
-    height: 60px;
-    background: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    border: 2px solid #fff;
-    flex-shrink: 0; /* عشان ميتضغطش في الموبايل */
-}
+            .main-nav {
+                padding: 8px 25px;
+                gap: 20px;
+                transform: translateX(0);
+                /* نلغي الإزاحة في الموبايل عشان المساحة */
+            }
 
-.logo-circle img {
-    width: 85%;
-    height: auto;
-    border-radius: 50%;
-}
+            .main-nav a {
+                font-size: 0.8rem;
+            }
 
-/* المنيو البيضاوية (الكبسولة) */
-.main-nav {
-    background: rgba(45, 45, 45, 0.8); /* خليتها أغمق شوية عشان تبان */
-    backdrop-filter: blur(10px);
-    padding: 10px 30px;
-    border-radius: 50px;
-    display: flex;
-    gap: 25px;
-    list-style: none;
-    margin: 0 auto; /* عشان تفضل في النص */
-    transform: translateX(-30px); /* تعويض لمكان اللوجو عشان تفضل في سنتر الصفحة بالظبط */
-}
+            /* الحاوية اللي بتجمع اللوجو والمنيو */
+            .header-nav-container {
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 90%;
+                max-width: 1200px;
+                display: flex;
+                justify-content: space-between;
+                /* اللوجو يمين والمنيو في النص */
+                align-items: center;
+                z-index: 10000;
+            }
 
-.main-nav a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    font-size: 0.9rem;
-}
+            /* اللوجو الدائري */
+            .logo-circle {
+                width: 60px;
+                height: 60px;
+                background: white;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                border: 2px solid #fff;
+                flex-shrink: 0;
+                /* عشان ميتضغطش في الموبايل */
+            }
 
-/* --- تعديلات الموبايل (مهمة جداً) --- */
-@media (max-width: 768px) {
-    .header-nav-container {
-        width: 95%;
-        top: 10px;
-    }
-    .logo-circle {
-        width: 45px;
-        height: 45px;
-    }
-    .main-nav {
-        padding: 8px 15px;
-        gap: 15px;
-        transform: translateX(0); /* نلغي الإزاحة في الموبايل عشان المساحة */
-    }
-    .main-nav a {
-        font-size: 0.8rem;
-    }
-}
-    
-}
+            .logo-circle img {
+                width: 85%;
+                height: auto;
+                border-radius: 50%;
+            }
+
+            /* المنيو البيضاوية (الكبسولة) */
+            .main-nav {
+                background: rgba(45, 45, 45, 0.8);
+                /* خليتها أغمق شوية عشان تبان */
+                backdrop-filter: blur(10px);
+                padding: 10px 30px;
+                border-radius: 50px;
+                display: flex;
+                gap: 25px;
+                list-style: none;
+                margin: 0 auto;
+                /* عشان تفضل في النص */
+                transform: translateX(-30px);
+                /* تعويض لمكان اللوجو عشان تفضل في سنتر الصفحة بالظبط */
+            }
+
+            .main-nav a {
+                text-decoration: none;
+                color: white;
+                font-weight: bold;
+                font-size: 0.9rem;
+            }
+
+            /* --- تعديلات الموبايل (مهمة جداً) --- */
+            @media (max-width: 768px) {
+                .header-nav-container {
+                    width: 95%;
+                    top: 10px;
+                }
+
+                .logo-circle {
+                    width: 45px;
+                    height: 45px;
+                }
+
+                .main-nav {
+                    padding: 8px 15px;
+                    gap: 15px;
+                    transform: translateX(0);
+                    /* نلغي الإزاحة في الموبايل عشان المساحة */
+                }
+
+                .main-nav a {
+                    font-size: 0.8rem;
+                }
+            }
+        }
+
+        /* تنسيق الزرار الرئيسي */
+        .lang-trigger {
+            background: rgba(45, 45, 45, 0.638);
+            /* نفس روح المنيو بتاعتك */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0);
+            color: white;
+            padding: 10px 18px;
+            border-radius: 50px;
+            /* بيضاوي زي المنيو */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transition: 0.3s all ease;
+        }
+
+        .lang-trigger:hover {
+            background: var(--secondary);
+            /* بيتحول للون الأزرق بتاعك عند الهوفر */
+            transform: translateY(-2px);
+        }
+
+        /* تنسيق القائمة المنسدلة */
+        .lang-menu {
+            position: absolute;
+            top: 55px;
+            right: 0;
+            background: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            list-style: none;
+            padding: 8px 0;
+            width: 130px;
+            display: none;
+            /* بتظهر بالـ JS اللي إنت كاتبه */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            z-index: 100000;
+            overflow: hidden;
+        }
+
+        .lang-menu.show {
+            display: block;
+            animation: scaleIn 0.2s ease forwards;
+        }
+
+        .lang-menu li {
+            padding: 12px 20px;
+            color: white;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: 0.2s;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .lang-menu li:last-child {
+            border-bottom: none;
+        }
+
+        .lang-menu li:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        /* أنيميشن الظهور */
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Refined centering for language trigger (exact middle alignment) */
+        .lang-dropdown {
+            display: inline-flex;
+            align-items: center;
+            height: 46px;
+        }
+
+        .lang-trigger {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            min-width: 72px;
+            padding: 0 14px;
+            box-sizing: border-box;
+        }
+
+        .lang-trigger i {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            margin: 0 8px 0 0;
+        }
+
+        #current-lang-text {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            margin: 0 0 0 6px;
+        }
     </style>
 </head>
 
 <body>
 
-<div class="header-nav-container">
-    <a href="index.html" class="logo-circle">
-        <img src="Gemini_Generated_Image_2amlv82amlv82aml.png" alt="AE Logo">
-    </a>
+    <div class="header-nav-container">
+        <a href="index.html" class="logo-circle">
+            <img src="Gemini_Generated_Image_2amlv82amlv82aml.png" alt="AE Logo">
+        </a>
 
-    <ul class="main-nav">
-        <li><a href="index.html#home">الرئيسية</a></li>
-        <li><a href="index.html#work">أعمالي</a></li>
-        <li><a href="index.html#contact">تواصل</a></li>
-    </ul>
-    
-    <div style="width: 60px;" class="desktop-only"></div>
-</div>
-<br>
-<br>
-<br>
-        <header class="global-dark-header">
+        <ul class="main-nav">
+            <li><a href="index.html#home" data-ar="الرئيسية" data-en="Home" data-it="Home">الرئيسية</a></li>
+            <li><a href="index.html#work" data-ar="أعمالي" data-en="Work" data-it="Progetti">أعمالي</a></li>
+            <li><a href="index.html#contact" data-ar="تواصل" data-en="Contact" data-it="Contatto">تواصل</a></li>
+
+            <button class="lang-trigger" id="langBtn">
+                    <i class="fas fa-language" style="font-size: 1.2rem; color: var(--secondary);"></i>
+                    <span id="current-lang-text">AR</span>
+                </button>
+                <ul class="lang-menu" id="langMenu">
+                    <li onclick="changeLang('ar')">العربية</li>
+                    <li onclick="changeLang('en')">English</li>
+                    <li onclick="changeLang('it')">Italiano</li>
+                </ul>
+        </ul>
+
+        <div style="width: 60px;" class="desktop-only"></div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <header class="global-dark-header">
         <div class="header-container">
             <div class="header-right">
                 <div class="menu-icon" onclick="toggleMenu()" style="display: flex !important;">
@@ -325,73 +569,133 @@
                     <span></span>
                 </div>
             </div>
-            
-            
 
-            
+
+
+
         </div>
     </header>
 
     <div class="container">
         <div class="project-card">
-            
+
             <div class="form-section">
-                <h2>إدخال البيانات</h2>
+                <h2 data-ar="إدخال البيانات" data-en="Enter your data" data-it="Inserisci i dati">إدخال البيانات</h2>
                 <div class="input-box">
-                    <label>اللقب (Cognome)</label>
-                    <input type="text" id="lastName" placeholder="ادخل اللقب">
+                    <label data-ar="اللقب (Cognome)" data-en="Surname (Cognome)" data-it="Cognome (Cognome)">اللقب (Cognome)</label>
+                    <input type="text" id="lastName" placeholder="ادخل اللقب" data-ar="ادخل اللقب" data-en="Enter surname" data-it="Inserisci cognome">
                 </div>
                 <div class="input-box">
-                    <label>الاسم (Nome)</label>
-                    <input type="text" id="firstName" placeholder="ادخل الاسم">
+                    <label data-ar="الاسم (Nome)" data-en="First name (Nome)" data-it="Nome (Nome)">الاسم (Nome)</label>
+                    <input type="text" id="firstName" placeholder="ادخل الاسم" data-ar="ادخل الاسم" data-en="Enter first name" data-it="Inserisci nome">
                 </div>
                 <div class="input-box">
-                    <label>تاريخ الميلاد</label>
+                    <label data-ar="تاريخ الميلاد" data-en="Birth date" data-it="Data di nascita">تاريخ الميلاد</label>
                     <input type="date" id="birthDate">
                 </div>
                 <div class="input-box">
-                    <label>الجنس (Sesso)</label>
+                    <label data-ar="الجنس (Sesso)" data-en="Gender (Sesso)" data-it="Sesso (Sesso)">الجنس (Sesso)</label>
                     <select id="gender">
-                        <option value="M">ذكر (M)</option>
-                        <option value="F">أنثى (F)</option>
+                        <option value="M" data-ar="ذكر (M)" data-en="Male (M)" data-it="Maschio (M)">ذكر (M)</option>
+                        <option value="F" data-ar="أنثى (F)" data-en="Female (F)" data-it="Femmina (F)">أنثى (F)</option>
                     </select>
                 </div>
                 <div class="input-box">
-                    <label>المدينة/دولة الميلاد</label>
+                    <label data-ar="المدينة/دولة الميلاد" data-en="Birth city/country" data-it="Città/Paese di nascita">المدينة/دولة الميلاد</label>
                     <select id="birthPlace">
-                        <option value="Z336">مصر (EGITTO)</option>
-                        <option value="H501">روما (ROMA)</option>
-                        <option value="F205">ميلانو (MILANO)</option>
-                        <option value="F839">نابولي (NAPOLI)</option>
-                        <option value="L219">تورينو (TORINO)</option>
-                        <option value="Z110">فرنسا (FRANCIA)</option>
-                        <option value="Z112">إسبانيا (SPAGNA)</option>
-                        <option value="Z404">أخرى (STRANIERO)</option>
+                        <option value="Z336" data-ar="مصر (EGITTO)" data-en="Egypt (EGITTO)" data-it="Egitto (EGITTO)">مصر (EGITTO)</option>
+                        <option value="H501" data-ar="روما (ROMA)" data-en="Rome (ROMA)" data-it="Roma (ROMA)">روما (ROMA)</option>
+                        <option value="F205" data-ar="ميلانو (MILANO)" data-en="Milan (MILANO)" data-it="Milano (MILANO)">ميلانو (MILANO)</option>
+                        <option value="F839" data-ar="نابولي (NAPOLI)" data-en="Naples (NAPOLI)" data-it="Napoli (NAPOLI)">نابولي (NAPOLI)</option>
+                        <option value="L219" data-ar="تورينو (TORINO)" data-en="Turin (TORINO)" data-it="Torino (TORINO)">تورينو (TORINO)</option>
+                        <option value="Z110" data-ar="فرنسا (FRANCIA)" data-en="France (FRANCIA)" data-it="Francia (FRANCIA)">فرنسا (FRANCIA)</option>
+                        <option value="Z112" data-ar="إسبانيا (SPAGNA)" data-en="Spain (SPAGNA)" data-it="Spagna (SPAGNA)">إسبانيا (SPAGNA)</option>
+                        <option value="Z404" data-ar="أخرى (STRANIERO)" data-en="Other (STRANIERO)" data-it="Altro (STRANIERO)">أخرى (STRANIERO)</option>
                     </select>
                 </div>
-                <button class="btn-calc" onclick="generateCode()">تشغيل الخوارزمية</button>
+                <button class="btn-calc" onclick="generateCode()" data-ar="تشغيل الخوارزمية" data-en="Run algorithm" data-it="Esegui algoritmo">تشغيل الخوارزمية</button>
             </div>
 
             <div class="result-section">
                 <i class="fa-solid fa-microchip" style="font-size: 2.5rem; color: #38bdf8; margin-bottom: 15px;"></i>
-                <p style="font-size: 0.85rem; color: #94a3b8;">الرمز الناتج (16 حرفاً):</p>
+                <p style="font-size: 0.85rem; color: #94a3b8;" data-ar="الرمز الناتج (16 حرفاً):" data-en="Generated code (16 chars):" data-it="Codice generato (16 caratteri):">الرمز الناتج (16 حرفاً):</p>
                 <div id="displayCode" class="code-output">---- ----</div>
-                <p class="logic-hint">
-                    تستخدم الخوارزمية جداول <strong>Odd/Even Control Digit</strong><br>
+                <p class="logic-hint" data-ar="تستخدم الخوارزمية جداول <strong>Odd/Even Control Digit</strong><br>وقواعد استخراج الحروف (1,3,4 للمنطق المتقدم)" data-en="The algorithm uses <strong>Odd/Even Control Digit</strong> tables<br>and letter extraction rules (1,3,4 advanced logic)" data-it="L'algoritmo usa le tabelle <strong>Odd/Even Control Digit</strong><br>e le regole di estrazione delle lettere (1,3,4 logica avanzata)">تستخدم الخوارزمية جداول <strong>Odd/Even Control Digit</strong><br>
                     وقواعد استخراج الحروف (1,3,4 للمنطق المتقدم)
                 </p>
             </div>
 
         </div>
         <div class="social-container">
-            <a href="https://www.facebook.com/profile.php?id=61568315912358" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/abdalla_t16/?__pwa=1" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/feed/?st=true" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
-            
-            
+            <a href="https://www.facebook.com/profile.php?id=61568315912358" class="social-icon"><i
+                    class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/abdalla_t16/?__pwa=1" class="social-icon"><i
+                    class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/feed/?st=true" class="social-icon"><i
+                    class="fa-brands fa-linkedin-in"></i></a>
+
+
         </div>
     </div>
+    <script>
+            // فتح وإغلاق القائمة
+            const langBtn = document.getElementById('langBtn');
+            const langMenu = document.getElementById('langMenu');
 
+            langBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                langMenu.classList.toggle('show');
+            });
+
+            // إغلاق القائمة لو ضغطت في أي حتة تانية في الصفحة
+            document.addEventListener('click', () => {
+                langMenu.classList.remove('show');
+            });
+
+            // وظيفة تغيير اللغة
+            function changeLang(lang) {
+                // 1. حفظ اللغة في المتصفح
+                localStorage.setItem('selectedLang', lang);
+
+                // 2. تحديث نصوص الصفحة
+                updatePageContent(lang);
+
+                // 3. تحديث نص الزرار
+                document.getElementById('current-lang-text').textContent = lang.toUpperCase();
+            }
+
+            const translations = {
+                emptyInput: {
+                    ar: "برجاء إدخال كافة البيانات بشكل صحيح",
+                    en: "Please fill all fields correctly",
+                    it: "Per favore compila tutti i campi correttamente"
+                }
+            };
+
+            // دالة تحديث المحتوى (تطبق في كل الصفحات)
+            function updatePageContent(lang) {
+                const elements = document.querySelectorAll('[data-ar]');
+
+                // Imposta direzione pagina una sola volta
+                if (lang === 'ar') document.body.dir = 'rtl';
+                else document.body.dir = 'ltr';
+
+                elements.forEach(el => {
+                    const value = el.getAttribute(`data-${lang}`) || el.getAttribute('data-ar');
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = value;
+                    } else {
+                        el.innerHTML = value;
+                    }
+                });
+            }
+
+            // تنفيذ اللغة المحفوظة فور تحميل الصفحة
+            document.addEventListener('DOMContentLoaded', () => {
+                const savedLang = localStorage.getItem('selectedLang') || 'ar';
+                changeLang(savedLang);
+            });
+        </script>
     <script>
         // --- C++ Logic Ported to JavaScript ---
 
@@ -469,7 +773,8 @@
             let birthPlace = document.getElementById('birthPlace').value;
 
             if (!lastName || !firstName || isNaN(bDate)) {
-                alert("برجاء إدخال كافة البيانات بشكل صحيح");
+                const currentLang = localStorage.getItem('selectedLang') || 'ar';
+                alert(translations.emptyInput[currentLang]);
                 return;
             }
 
@@ -496,8 +801,11 @@
             let checkDigit = getCheckDigit(partialCode);
 
             document.getElementById('displayCode').innerText = partialCode + checkDigit;
+            
         }
+        
     </script>
 
 </body>
+
 </html>

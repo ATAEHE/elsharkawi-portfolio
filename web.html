@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مشروع الأهلي | Abdalla</title>
-    <link rel="icon" type="image/png" href="Gemini_Generated_Image_kwv1xokwv1xokwv1.png">
-    <meta property="og:image" content="Gemini_Generated_Image_kwv1xokwv1xokwv1.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Outfit:wght@300;600;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Outfit:wght@300;600;900&display=swap"
+        rel="stylesheet">
 
     <style>
         :root {
             --primary: #000000;
             --secondary: #5563f7;
-            --ahly-red: #e30613; /* لون الأهلي المميز */
+            --ahly-red: #e30613;
+            /* لون الأهلي المميز */
             --bg: #ffffff;
         }
 
@@ -100,7 +100,7 @@
         /* وصف المشروع */
         .description-box {
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(0,0,0,0.1);
+            border: 1px solid rgba(0, 0, 0, 0.1);
             padding: 40px;
             border-radius: 30px;
             margin-bottom: 40px;
@@ -162,6 +162,7 @@
             border-color: var(--ahly-red);
             transform: translateY(-5px);
         }
+
         .social-container {
             display: flex;
             justify-content: center;
@@ -190,147 +191,350 @@
         }
 
         @media (max-width: 768px) {
-            .content { padding-top: 120px; }
-            .visit-btn { width: 100%; justify-content: center; }
+            .content {
+                padding-top: 120px;
+            }
+
+            .visit-btn {
+                width: 100%;
+                justify-content: center;
+            }
         }
 
         /* الحاوية اللي بتجمع اللوجو والمنيو */
-.header-nav-container {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 1200px;
-    display: flex;
-    justify-content: space-between; /* اللوجو يمين والمنيو في النص */
-    align-items: center;
-    z-index: 10000;
-}
+        .header-nav-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            /* اللوجو يمين والمنيو في النص */
+            align-items: center;
+            z-index: 10000;
+        }
 
-/* اللوجو الدائري */
-.logo-circle {
-    width: 60px;
-    height: 60px;
-    background: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    border: 2px solid #fff;
-    flex-shrink: 0; /* عشان ميتضغطش في الموبايل */
-}
+        /* اللوجو الدائري */
+        .logo-circle {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid #fff;
+            flex-shrink: 0;
+            /* عشان ميتضغطش في الموبايل */
+        }
 
-.logo-circle img {
-    width: 85%;
-    height: auto;
-    border-radius: 50%;
-}
+        .logo-circle img {
+            width: 85%;
+            height: auto;
+            border-radius: 50%;
+        }
 
-/* المنيو البيضاوية (الكبسولة) */
-.main-nav {
-    background: rgba(200, 23, 23, 0.7); /* خليتها أغمق شوية عشان تبان */
-    backdrop-filter: blur(10px);
-    padding: 10px 100px;
-    border-radius: 50px;
-    display: flex;
-    gap: 100px;
-    list-style: none;
-    margin: 0 auto; /* عشان تفضل في النص */
-    transform: translateX(-30px); /* تعويض لمكان اللوجو عشان تفضل في سنتر الصفحة بالظبط */
-}
+        /* المنيو البيضاوية (الكبسولة) */
+        .main-nav {
+            background: rgba(227, 6, 19, 0.85);
+            /* نفس لون الصفحة الأحمر */
+            backdrop-filter: blur(10px);
+            padding: 10px 100px;
+            border-radius: 50px;
+            display: flex;
+            gap: 100px;
+            list-style: none;
+            margin: 0 auto;
+            /* عشان تفضل في النص */
+            transform: translateX(-30px);
+            /* تعويض لمكان اللوجو عشان تفضل في سنتر الصفحة بالظبط */
+        }
 
-.main-nav a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    font-size: 0.9rem;
-}
+        .main-nav a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
 
-/* --- تعديلات الموبايل (مهمة جداً) --- */
-@media (max-width: 768px) {
-    .header-nav-container {
-        width: 95%;
-        top: 10px;
-    }
-    .logo-circle {
-        width: 45px;
-        height: 45px;
-    }
-    .main-nav {
-        padding: 8px 25px;
-        gap: 20px;
-        transform: translateX(0); /* نلغي الإزاحة في الموبايل عشان المساحة */
-    }
-    .main-nav a {
-        font-size: 0.8rem;
-    }
-}
+        /* --- تعديلات الموبايل (مهمة جداً) --- */
+        @media (max-width: 768px) {
+            .header-nav-container {
+                width: 95%;
+                top: 10px;
+            }
 
-        footer { padding: 50px; text-align: center; border-top: 1px solid #eee; }
+            .logo-circle {
+                width: 45px;
+                height: 45px;
+            }
+
+            .main-nav {
+                padding: 8px 25px;
+                gap: 20px;
+                transform: translateX(0);
+                /* نلغي الإزاحة في الموبايل عشان المساحة */
+            }
+
+            .main-nav a {
+                font-size: 0.8rem;
+            }
+        }
+
+        footer {
+            padding: 50px;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+        /* تنسيق الزرار الرئيسي */
+        .lang-trigger {
+            background: rgba(200, 23, 23, 0.7);
+            /* نفس روح المنيو بتاعتك */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 10px 18px;
+            border-radius: 50px;
+            /* بيضاوي زي المنيو */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: 0.3s all ease;
+        }
+
+        .lang-trigger:hover {
+            background: rgba(227, 6, 19, 0.95);
+            transform: translateY(-2px);
+        }
+
+        /* تنسيق القائمة المنسدلة */
+        .lang-menu {
+            position: absolute;
+            top: 55px;
+            right: 0;
+            background: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            list-style: none;
+            padding: 8px 0;
+            width: 130px;
+            display: none;
+            /* بتظهر بالـ JS اللي إنت كاتبه */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            z-index: 100000;
+            overflow: hidden;
+        }
+
+        .lang-menu.show {
+            display: block;
+            animation: scaleIn 0.2s ease forwards;
+        }
+
+        .lang-menu li {
+            padding: 12px 20px;
+            color: white;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: 0.2s;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .lang-menu li:last-child {
+            border-bottom: none;
+        }
+
+        .lang-menu li:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        /* أنيميشن الظهور */
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Refined centering for language trigger (exact middle alignment) */
+        .lang-dropdown {
+            display: inline-flex;
+            align-items: center;
+            height: 46px;
+        }
+
+        .lang-trigger {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            min-width: 72px;
+            padding: 0 14px;
+            box-sizing: border-box;
+        }
+
+        .lang-trigger i {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            margin: 0 8px 0 0;
+            color: white;
+        }
+
+        #current-lang-text {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            margin: 0 0 0 6px;
+        }
     </style>
 </head>
 
 <body>
 
-<div class="header-nav-container">
-    <a href="index.html" class="logo-circle">
-        <img src="Gemini_Generated_Image_2amlv82amlv82aml.png" alt="AE Logo">
-    </a>
+    <div class="header-nav-container">
+        <a href="index.html" class="logo-circle">
+            <img src="Gemini_Generated_Image_2amlv82amlv82aml.png" alt="AE Logo">
+        </a>
 
-    <ul class="main-nav">
-        <li><a href="index.html#home">الرئيسية</a></li>
-        <li><a href="index.html#work">أعمالي</a></li>
-        <li><a href="index.html#contact">تواصل</a></li>
-    </ul>
-    
-    <div style="width: 60px;" class="desktop-only"></div>
-</div>
+        <ul class="main-nav">
+            <li><a href="index.html#home" data-ar="الرئيسية" data-en="Home" data-it="Home">الرئيسية</a></li>
+            <li><a href="index.html#work" data-ar="أعمالي" data-en="Work" data-it="Progetti">أعمالي</a></li>
+            <li><a href="index.html#contact" data-ar="تواصل" data-en="Contact" data-it="Contatto">تواصل</a></li>
+
+            <button class="lang-trigger" id="langBtn">
+                    <i class="fas fa-language" style="font-size: 1.2rem;"></i>
+                    <span id="current-lang-text">AR</span>
+                </button>
+                <ul class="lang-menu" id="langMenu">
+                    <li onclick="changeLang('ar')">العربية</li>
+                    <li onclick="changeLang('en')">English</li>
+                    <li onclick="changeLang('it')">Italiano</li>
+                </ul>
+        </ul>
+
+
+        <div style="width: 60px;" class="desktop-only"></div>
+    </div>
 
     <div class="content">
-        <span class="tag">Web Development</span>
-        <h1 class="project-title">Al Ahly Website Project</h1>
-        
-        <p style="font-size: 1.2rem; margin-bottom: 40px;">بناء تجربة رقمية فريدة تليق بنادي القرن</p>
+        <span class="tag" data-ar="Web Development" data-en="Web Development" data-it="Web Development">Web Development</span>
+        <h1 class="project-title" data-ar="Al Ahly Website Project" data-en="Al Ahly Website Project" data-it="Progetto sito Al Ahly">Al Ahly Website Project</h1>
 
-        <a href="index2.html" class="visit-btn">
+        <p style="font-size: 1.2rem; margin-bottom: 40px;" data-ar="بناء تجربة رقمية فريدة تليق بنادي القرن" data-en="Creating a unique digital experience worthy of the century club" data-it="Creare un'esperienza digitale unica degna del club del secolo">بناء تجربة رقمية فريدة تليق بنادي القرن</p>
+
+        <a href="index2.html" class="visit-btn" data-ar="معاينة الموقع المباشرة" data-en="Live site preview" data-it="Anteprima sito live">
             <i class="fa-solid fa-paper-plane"></i> معاينة الموقع المباشرة
         </a>
 
         <div class="description-box">
-            <h2>عن المشروع</h2>
-            <p>هذا المشروع هو عبارة عن تطبيق ويب مخصص لنادي الأهلي، تم تصميمه ليكون حلقة وصل بين النادي وجماهيره. ركزت في هذا العمل على دمج الهوية البصرية العريقة للنادي مع أحدث تقنيات الويب لضمان سرعة الأداء وسهولة الاستخدام على كافة الأجهزة.</p>
+            <h2 data-ar="عن المشروع" data-en="About the project" data-it="Sul progetto">عن المشروع</h2>
+            <p data-ar="هذا المشروع هو عبارة عن تطبيق ويب مخصص لنادي الأهلي، تم تصميمه ليكون حلقة وصل بين النادي وجماهيره. ركزت في هذا العمل على دمج الهوية البصرية العريقة للنادي مع أحدث تقنيات الويب لضمان سرعة الأداء وسهولة الاستخدام على كافة الأجهزة."
+               data-en="This project is a custom web application for Al Ahly, designed to connect the club with its fans. I focused on blending the club's iconic visual identity with the latest web technologies to ensure fast performance and ease of use on all devices."
+               data-it="Questo progetto è un'app web personalizzata per l'Al Ahly, progettata per connettere il club con i tifosi. Ho puntato a integrare l'iconica identità visiva del club con le ultime tecnologie web per garantire prestazioni veloci e facilità d'uso su tutti i dispositivi.">هذا المشروع هو عبارة عن تطبيق ويب مخصص لنادي الأهلي، تم تصميمه ليكون حلقة وصل بين النادي وجماهيره. ركزت
+                في هذا العمل على دمج الهوية البصرية العريقة للنادي مع أحدث تقنيات الويب لضمان سرعة الأداء وسهولة
+                الاستخدام على كافة الأجهزة.</p>
         </div>
 
         <div class="features-grid">
             <div class="feature-card">
                 <i class="fa-solid fa-bolt"></i>
-                <h3>أداء سريع</h3>
-                <p>تحميل فوري للعناصر لضمان عدم ملل المستخدم.</p>
+                <h3 data-ar="أداء سريع" data-en="Fast performance" data-it="Prestazioni rapide">أداء سريع</h3>
+                <p data-ar="تحميل فوري للعناصر لضمان عدم ملل المستخدم." data-en="Instant loading of elements to keep users engaged." data-it="Caricamento istantaneo degli elementi per mantenere gli utenti coinvolti.">تحميل فوري للعناصر لضمان عدم ملل المستخدم.</p>
             </div>
             <div class="feature-card">
                 <i class="fa-solid fa-mobile-screen-button"></i>
-                <h3>متجاوب بالكامل</h3>
-                <p>يعمل بشكل مثالي على الموبايل والتابلت والكمبيوتر.</p>
+                <h3 data-ar="متجاوب بالكامل" data-en="Fully responsive" data-it="Completamente responsive">متجاوب بالكامل</h3>
+                <p data-ar="يعمل بشكل مثالي على الموبايل والتابلت والكمبيوتر." data-en="Works perfectly on mobile, tablet, and desktop." data-it="Funziona perfettamente su mobile, tablet e desktop.">يعمل بشكل مثالي على الموبايل والتابلت والكمبيوتر.</p>
             </div>
             <div class="feature-card">
                 <i class="fa-solid fa-palette"></i>
-                <h3>هوية بصرية</h3>
-                <p>استخدام ألوان النادي الرسمية بشكل عصري ومريح للعين.</p>
+                <h3 data-ar="هوية بصرية" data-en="Visual identity" data-it="Identità visiva">هوية بصرية</h3>
+                <p data-ar="استخدام ألوان النادي الرسمية بشكل عصري ومريح للعين." data-en="Using the club's official colors in a modern, eye-friendly way." data-it="Uso dei colori ufficiali del club in modo moderno e piacevole per gli occhi.">استخدام ألوان النادي الرسمية بشكل عصري ومريح للعين.</p>
             </div>
         </div>
     </div>
 
     <div class="social-container">
-            <a href="https://www.facebook.com/profile.php?id=61568315912358" class="social-icon"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/abdalla_t16/?__pwa=1" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/feed/?st=true" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
-        </div>
+        <a href="https://www.facebook.com/profile.php?id=61568315912358" class="social-icon"><i
+                class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/abdalla_t16/?__pwa=1" class="social-icon"><i
+                class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/feed/?st=true" class="social-icon"><i
+                class="fa-brands fa-linkedin-in"></i></a>
+    </div>
 
     <footer>
-        <p>© Created by Abdalla Elsharkawi</p>
+        <p data-ar="© Created by Abdalla Elsharkawi" data-en="© Created by Abdalla Elsharkawi" data-it="© Creato da Abdalla Elsharkawi">© Created by Abdalla Elsharkawi</p>
     </footer>
+
+    <script>
+            // فتح وإغلاق القائمة
+            const langBtn = document.getElementById('langBtn');
+            const langMenu = document.getElementById('langMenu');
+
+            langBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                langMenu.classList.toggle('show');
+            });
+
+            // إغلاق القائمة لو ضغطت في أي حتة تانية في الصفحة
+            document.addEventListener('click', () => {
+                langMenu.classList.remove('show');
+            });
+
+            // وظيفة تغيير اللغة
+            function changeLang(lang) {
+                // 1. حفظ اللغة في المتصفح
+                localStorage.setItem('selectedLang', lang);
+
+                // 2. تحديث نصوص الصفحة
+                updatePageContent(lang);
+
+                // 3. تحديث نص الزرار
+                document.getElementById('current-lang-text').textContent = lang.toUpperCase();
+            }
+
+            // دالة تحديث المحتوى (تطبق في كل الصفحات)
+            function updatePageContent(lang) {
+                const elements = document.querySelectorAll('[data-ar]');
+
+                // Imposta direzione pagina una sola volta
+                if (lang === 'ar') document.body.dir = 'rtl';
+                else document.body.dir = 'ltr';
+
+                elements.forEach(el => {
+                    if (lang === 'ar') {
+                        el.innerHTML = el.getAttribute('data-ar');
+                    } else if (lang === 'en') {
+                        el.innerHTML = el.getAttribute('data-en') || el.getAttribute('data-ar');
+                    } else if (lang === 'it') {
+                        el.innerHTML = el.getAttribute('data-it') || el.getAttribute('data-ar');
+                    }
+                });
+            }
+
+            // تنفيذ اللغة المحفوظة فور تحميل الصفحة
+            document.addEventListener('DOMContentLoaded', () => {
+                const savedLang = localStorage.getItem('selectedLang') || 'ar';
+                changeLang(savedLang);
+            });
+        </script>
 
 </body>
 

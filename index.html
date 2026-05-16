@@ -510,7 +510,375 @@
             margin: 0 0 0 6px;
         }
 
-        
+        /* حاوية زرار الإعدادات */
+        .settings-dropdown {
+            position: relative;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        /* زرار الترس الرئيسي */
+        .settings-trigger {
+            background: rgba(45, 45, 45, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: 0.3s all ease;
+        }
+
+        .settings-trigger:hover {
+            background: var(--secondary);
+            transform: rotate(45deg);
+            /* حركة لفة خفيفة للترس */
+        }
+
+        /* القائمة المنسدلة المشتركة */
+        .settings-menu {
+            position: absolute;
+            top: 50px;
+            inset-inline-end: 0;
+            inset-inline-start: auto;
+            background: var(--bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 15px;
+            width: 180px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            display: none;
+            /* مخفية افتراضياً */
+            z-index: 10001;
+            transition: 0.3s all ease;
+        }
+
+        /* لتفتيح القائمة بالـ JS */
+        .settings-menu.show {
+            display: block;
+        }
+
+        /* عناوين الأقسام داخل القائمة */
+        .section-title {
+            font-size: 0.75rem;
+            color: var(--text-color);
+            opacity: 0.6;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* زرار تغيير المود الداخلي */
+        .theme-toggle-inline {
+            width: 100%;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-color);
+            padding: 8px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            transition: 0.2s;
+        }
+
+        .theme-toggle-inline:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        /* قائمة اللغات الجانبية */
+        .lang-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .lang-list li {
+            padding: 8px 12px;
+            color: var(--text-color);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: 0.2s;
+        }
+
+        .lang-list li:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        /* فاصل شيك */
+        .menu-divider {
+            border: 0;
+            border-top: 1px solid var(--card-border);
+            margin: 12px 0;
+        }
+
+        /* ضبط الموبايل */
+        @media (max-width: 768px) {
+            .settings-trigger {
+                width: 38px;
+                height: 38px;
+                font-size: 1.1rem;
+            }
+
+            .settings-menu {
+                top: calc(100% + 8px);
+                left: 50%;
+                transform: translateX(-50%);
+                width: 160px;
+            }
+        }
+
+        /* ==========================================================================
+   1. تعريف ألوان الوضعين (Global Variables)
+   ========================================================================== */
+
+        /* ألوان الوضع الفاتح (الافتراضي) */
+        :root {
+            --bg: #ffffff;
+            --primary: #000000;
+            --secondary: #5563f7;
+            --card-bg: rgba(0, 0, 0, 0.03);
+            --card-border: rgba(0, 0, 0, 0.08);
+            --text-color: #0b254a;
+            --btn-text: #ffffff;
+            --dropdown-bg: #ffffff;
+        }
+
+        /* ألوان الوضع الداكن (يتم تفعيلها بالـ JS) */
+        body.dark-theme {
+            --bg: #121212;
+            --primary: #ffffff;
+            --secondary: #5563f7;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.12);
+            --text-color: #f1f5f9;
+            --btn-text: #121212;
+            --dropdown-bg: #1e1e1e;
+            /* خلفية داكنة مريحة للقائمة المنسدلة */
+        }
+
+        /* ==========================================================================
+   2. تطبيق الألوان على عناصر الموقع الأساسية
+   ========================================================================== */
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-color);
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* نصوص الهيرو (الترحيب) */
+        .hero h1 {
+            color: var(--primary);
+            transition: color 0.3s ease;
+        }
+
+        .hero p {
+            color: var(--text-color);
+            opacity: 0.9;
+            transition: color 0.3s ease;
+        }
+
+        /* الزراير الرئيسية (مثل استكشف أعمالي) */
+        .btn-modern {
+            background: var(--primary);
+            color: var(--btn-text);
+            border: 2px solid var(--primary);
+            padding: 15px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-modern:hover {
+            background: transparent;
+            color: var(--primary);
+        }
+
+        /* كروت المشاريع (C++ & Blender) */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 35px;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .card h3 {
+            color: var(--primary);
+        }
+
+        /* أزرار السوشيال ميديا أسفل الموقع */
+        .social-icon {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: var(--primary);
+            color: var(--bg);
+        }
+
+        /* ==========================================================================
+   3. تنسيق قائمة الترس الذكية (Settings Dropdown)
+   ========================================================================== */
+
+        .settings-dropdown {
+            position: relative;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        /* زرار الترس الدائري */
+        .settings-trigger {
+            background: rgba(45, 45, 45, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            /* الترس يفضل أبيض دائماً على الشريت العلوي */
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .settings-trigger:hover {
+            background: var(--secondary);
+            transform: rotate(45deg);
+        }
+
+        /* القائمة المنسدلة المشتركة */
+        .settings-menu {
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dropdown-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 15px;
+            width: 190px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            display: none;
+            z-index: 10001;
+            transition: all 0.3s ease;
+        }
+
+        /* كلاس التفعيل عبر الجافا سكريبت */
+        .settings-menu.show {
+            display: block;
+        }
+
+        /* عناوين المجموعات الداخلية */
+        .section-title {
+            font-size: 0.75rem;
+            color: var(--text-color);
+            opacity: 0.6;
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        /* زرار المود الداخلي */
+        .theme-toggle-inline {
+            width: 100%;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-color);
+            padding: 10px 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .theme-toggle-inline:hover {
+            background: var(--secondary);
+            color: #ffffff;
+            border-color: var(--secondary);
+        }
+
+        /* عناصر قائمة اللغات */
+        .lang-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .lang-list li {
+            padding: 8px 12px;
+            color: var(--text-color);
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .lang-list li:hover {
+            background: var(--secondary);
+            color: #ffffff;
+        }
+
+        /* الفاصل بين الأقسام */
+        .menu-divider {
+            border: 0;
+            border-top: 1px solid var(--card-border);
+            margin: 12px 0;
+        }
+
+        /* ==========================================================================
+   4. التوافق التام مع التليفون (Responsive Design)
+   ========================================================================== */
+
+        @media (max-width: 768px) {
+            .settings-trigger {
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+
+            .settings-menu {
+                top: 48px;
+                width: 170px;
+                padding: 12px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .btn-modern {
+                padding: 12px 35px;
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 
@@ -525,18 +893,31 @@
                 <li><a href="#home" data-ar="الرئيسية" data-en="Home" data-it="Home">الرئيسية</a></li>
                 <li><a href="#work" data-ar="أعمالي" data-en="Work" data-it="Progetti">أعمالي</a></li>
                 <li><a href="#contact" data-ar="تواصل" data-en="Contact" data-it="Contatto">تواصل</a></li>
-                <button class="lang-trigger" id="langBtn">
-                    <i class="fas fa-language" style="font-size: 1.2rem; color: var(--secondary);"></i>
-                    <span id="current-lang-text">AR</span>
-                </button>
-                <ul class="lang-menu" id="langMenu">
-                    <li onclick="changeLang('ar')">العربية</li>
-                    <li onclick="changeLang('en')">English</li>
-                    <li onclick="changeLang('it')">Italiano</li>
-                </ul>
-            </ul>
 
-            
+                <div class="settings-dropdown">
+                <button class="settings-trigger" id="settingsBtn">
+                    <i class="fas fa-cog"></i> </button>
+                    <div class="settings-menu" id="settingsMenu">
+                    <div class="menu-section">
+                        <span class="section-title">Mode</span>
+                        <button class="theme-toggle-inline" id="themeInlineBtn">
+                            <i class="fas fa-moon"></i> <span id="theme-text">Dark Mode</span>
+                        </button>
+                    </div>
+
+                    <hr class="menu-divider">
+
+                    <div class="menu-section">
+                        <span class="section-title">Language</span>
+                        <ul class="lang-list">
+                            <li onclick="changeLang('ar')">العربية</li>
+                            <li onclick="changeLang('en')">English</li>
+                            <li onclick="changeLang('it')">Italiano</li>
+                        </ul>
+                    </div>
+                </div>
+            </ul>
+            </div>
 
             <div style="width: 60px;" class="desktop-only"></div>
         </div>
@@ -547,7 +928,8 @@
             <h1 data-ar="أصنع مستقبلاً<br>رقمياً <span>مبهراً.</span>"
                 data-en="I build a<br>stunning <span>digital future.</span>"
                 data-it="Creo un futuro<br>digitale <span>sorprendente.</span>">أصنع مستقبلاً<br>رقمياً
-                <span>مبهراً.</span></h1>
+                <span>مبهراً.</span>
+            </h1>
             <p data-ar="أنا مبرمج ومصمم أجمع بين الكود النظيف والتصميم اللي يخطف العين."
                 data-en="I am a developer and designer combining clean code with eye-catching design."
                 data-it="Sono uno sviluppatore e designer che unisce codice pulito a design accattivante.">أنا مبرمج
@@ -612,58 +994,7 @@
             <p>© Created by Abdalla Elsharkawi</p>
         </footer>
 
-        <script>
-            // فتح وإغلاق القائمة
-            const langBtn = document.getElementById('langBtn');
-            const langMenu = document.getElementById('langMenu');
-
-            langBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                langMenu.classList.toggle('show');
-            });
-
-            // إغلاق القائمة لو ضغطت في أي حتة تانية في الصفحة
-            document.addEventListener('click', () => {
-                langMenu.classList.remove('show');
-            });
-
-            // وظيفة تغيير اللغة
-            function changeLang(lang) {
-                // 1. حفظ اللغة في المتصفح
-                localStorage.setItem('selectedLang', lang);
-
-                // 2. تحديث نصوص الصفحة
-                updatePageContent(lang);
-
-                // 3. تحديث نص الزرار
-                document.getElementById('current-lang-text').textContent = lang.toUpperCase();
-            }
-
-            // دالة تحديث المحتوى (تطبق في كل الصفحات)
-            function updatePageContent(lang) {
-                const elements = document.querySelectorAll('[data-ar]');
-
-                // Imposta direzione pagina una sola volta
-                if (lang === 'ar') document.body.dir = 'rtl';
-                else document.body.dir = 'ltr';
-
-                elements.forEach(el => {
-                    if (lang === 'ar') {
-                        el.innerHTML = el.getAttribute('data-ar');
-                    } else if (lang === 'en') {
-                        el.innerHTML = el.getAttribute('data-en') || el.getAttribute('data-ar');
-                    } else if (lang === 'it') {
-                        el.innerHTML = el.getAttribute('data-it') || el.getAttribute('data-ar');
-                    }
-                });
-            }
-
-            // تنفيذ اللغة المحفوظة فور تحميل الصفحة
-            document.addEventListener('DOMContentLoaded', () => {
-                const savedLang = localStorage.getItem('selectedLang') || 'ar';
-                changeLang(savedLang);
-            });
-        </script>
+<script src="settings.js"></script>
 
 </body>
 
